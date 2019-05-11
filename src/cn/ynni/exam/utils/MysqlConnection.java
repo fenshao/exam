@@ -2,6 +2,9 @@ package cn.ynni.exam.utils;
 
 import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class MysqlConnection {
@@ -10,9 +13,70 @@ public class MysqlConnection {
     static Properties properties = null;
     Connection connection = null;
 
-//    static {
-//        try {
-//
-//        }
-//    }
+    static {
+        try {
+            inputStream = MysqlConnection.class.getClassLoader().getResourceAsStream("jdbc.properties");
+
+            //加载配置文件
+            properties = new Properties();
+
+            //把输入流加载到对象中
+            properties.load(inputStream);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                inputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //单例模式创建对象
+    private MysqlConnection() {
+
+    }
+
+    //获取该对象的方法
+    public static MysqlConnection getMysqlConnection(){
+        return dbm;
+
+    }
+
+    //返回数据库连接
+    public Connection getCon(){
+
+        try {
+            Class.forName(properties.getProperty("drivername"));
+
+
+            try {
+                connection = DriverManager.getConnection(properties.getProperty("url"), properties.getProperty("username"), properties.getProperty("password"));
+                return connection;
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
+
+        } catch (ClassNotFoundException e) {
+
+            e.printStackTrace();
+        }
+
+        return connection;
+
+    }
+
+    //关闭结果集
+    public void closeResuletSet(ResultSet rs){
+        try {
+            rs.close();
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+    }
+
 }
