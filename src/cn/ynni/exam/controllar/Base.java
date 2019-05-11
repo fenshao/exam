@@ -2,7 +2,6 @@ package cn.ynni.exam.controllar;
 
 import cn.ynni.exam.utils.MysqlConnection;
 
-import javax.jws.WebService;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
