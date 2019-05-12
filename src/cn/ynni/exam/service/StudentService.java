@@ -165,7 +165,8 @@ public class StudentService {
      * @param: password
      * 学生登录
      ********************************************/
-    public boolean loginSystem(String username, String password) {
+    public Student loginSystem(String username, String password) {
+        Student student = new Student();
         Connection conn = MysqlConnection.getMysqlConnection().getCon();
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -176,12 +177,18 @@ public class StudentService {
             pst.setString(2, password);
             rs = pst.executeQuery();
 
-            if (rs != null) return true;
+            while (rs.next()) {
+                student.setStuId(rs.getString(1));
+                student.setStuPassword(rs.getString(2));
+                student.setStuName(rs.getString(3));
+                student.setStuSex(rs.getString(4));
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return false;
+        return student;
     }
 
 }

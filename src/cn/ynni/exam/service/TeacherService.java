@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import cn.ynni.exam.model.Student;
+import cn.ynni.exam.model.Teacher;
 import cn.ynni.exam.utils.MysqlConnection;
 
 /**
@@ -25,25 +27,29 @@ public class TeacherService {
 	 * @param: password
 	 * 教师登录
 	 ********************************************/
-	public boolean loginSystem(String username, String password) {
+	public Teacher loginSystem(String username, String password) {
+		Teacher teacher = new Teacher();
 		Connection conn = MysqlConnection.getMysqlConnection().getCon();
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 
-
 		try {
-			pst = conn.prepareStatement("SELECT * FROM teacher WHERE tea_id = ? AND tea_password = ?");
+			pst = conn.prepareStatement("SELECT * FROM student WHERE stu_id = ? AND stu_password = ?");
 			pst.setString(1, username);
 			pst.setString(2, password);
 			rs = pst.executeQuery();
 
-			if (rs.next()) return true;
+			while (rs.next()) {
+				teacher.setTeaId(rs.getString(1));
+				teacher.setTeaPassword(rs.getString(2));
+				teacher.setTeaName(rs.getString(3));
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return false;
+		return teacher;
 	}
 
 	public boolean insertTeacher(String teaId, String teaPassword, String teaName) {

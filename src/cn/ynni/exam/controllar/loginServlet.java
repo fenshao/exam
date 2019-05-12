@@ -1,5 +1,7 @@
 package cn.ynni.exam.controllar;
 
+import cn.ynni.exam.model.Student;
+import cn.ynni.exam.model.Teacher;
 import cn.ynni.exam.service.StudentService;
 import cn.ynni.exam.service.TeacherService;
 
@@ -26,7 +28,6 @@ public class loginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String optionID = req.getParameter("option");
-        boolean result = false;
 
         System.out.println(username + " " + password);
 
@@ -34,23 +35,36 @@ public class loginServlet extends HttpServlet {
         if (optionID.equals("0")) { //学生
             //判断密码是否正确
             StudentService studentService = new StudentService();
-            result = studentService.loginSystem(username, password);
+            Student student = studentService.loginSystem(username, password);
+
+            if (student.getStuId() != null) {
+                //设置session
+                req.getSession().setAttribute("username", username);
+                req.getSession().setMaxInactiveInterval(6000);
+
+                resp.sendRedirect("studentcontent.jsp");
+            }
+            else {
+                req.setAttribute("message", "用户名或密码错误");
+                req.getRequestDispatcher("index.jsp").forward(req, resp);
+            }
+
         } else { //教师
             TeacherService teacherService = new TeacherService();
-            result = teacherService.loginSystem(username, password);
+            Teacher teacher = teacherService.loginSystem(username, password);
+
+            if (teacher.getTeaId() != null) {
+                //设置session
+                req.getSession().setAttribute("username", username);
+                req.getSession().setMaxInactiveInterval(6000);
+                resp.sendRedirect("teachercontent.jsp");
+            }
+            else {
+                req.setAttribute("message", "用户名或密码错误");
+                req.getRequestDispatcher("index.jsp").forward(req, resp);
+            }
+
         }
 
-        if (result) {
-            //设置session
-            req.getSession().setAttribute("username", username);
-            req.getSession().setMaxInactiveInterval(6000);
-
-            if (optionID.equals("0")) resp.sendRedirect("studentcontent.jsp");
-            else resp.sendRedirect("teachercontent.jsp");
-        }
-        else {
-            req.setAttribute("message", "用户名或密码错误");
-            req.getRequestDispatcher("index.jsp").forward(req, resp);
-        }
     }
 }
