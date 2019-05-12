@@ -8,7 +8,7 @@
         <servlet-name>Base</servlet-name>
         <servlet-class>cn.ynni.exam.controllar.Base</servlet-class>
     </servlet>
-    
+
     <servlet-mapping>
         <servlet-name>Base</servlet-name>
         <url-pattern>/Base</url-pattern>
