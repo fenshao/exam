@@ -1,0 +1,39 @@
+/*顶部导航*/
+/*.bgbox{
+	background: url(../picture/2.jpg);
+}*/
+
+
+/*右侧主体部分开始*/
+
+/*公共样式开始*/
+
+/*公共样式结束*/
+.rightmain{
+	position:absolute;
+	top:-10px;
+	left:214px;
+	bottom:0;
+	right:0;
+	overflow: hidden;
+	/*可能会出现滚动条*/
+}
+.rightmain1{
+	position:absolute;
+	top:63px;
+	left:0;
+	bottom:0;
+	right:0;
+	overflow: hidden;
+	/*可能会出现滚动条*/
+}
+
+.rightcontent{
+	height:100%;
+	padding: 7px 0 0 7px;
+	
+}
+.rightcontent iframe{
+	width:100%;
+	height:100%;
+}
