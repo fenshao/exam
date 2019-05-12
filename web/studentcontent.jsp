@@ -22,9 +22,9 @@
 		</div>
 		<ul>
 			<li class="nav-item">
-				<a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span>考试管理</span><i class="my-icon nav-more"></i></a>
+				<a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span>查看考试</span><i class="my-icon nav-more"></i></a>
 				<ul>
-					<li><a href="javascript:;"><span>查看考试</span></a></li>
+					<li><a href="javascript:;"><span>以往考试</span></a></li>
 					<li><a href="javascript:;"><span>进入考试</span></a></li>
 				</ul>
 			</li>
