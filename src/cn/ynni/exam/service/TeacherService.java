@@ -18,6 +18,34 @@ import cn.ynni.exam.utils.MysqlConnection;
  *
  */
 public class TeacherService {
+
+	/********************************************
+	 * author: wangziquan
+	 * @param: username
+	 * @param: password
+	 * 教师登录
+	 ********************************************/
+	public boolean loginSystem(String username, String password) {
+		Connection conn = MysqlConnection.getMysqlConnection().getCon();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+
+
+		try {
+			pst = conn.prepareStatement("SELECT * FROM teacher WHERE tea_id = ? AND tea_password = ?");
+			pst.setString(1, username);
+			pst.setString(2, password);
+			rs = pst.executeQuery();
+
+			if (rs.next()) return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
 	public boolean insertTeacher(String teaId, String teaPassword, String teaName) {
 		Connection conn = MysqlConnection.getMysqlConnection().getCon();
 		String sql = "insert into teacher values(?, ?, ?)";

@@ -156,6 +156,31 @@ public class StudentService {
         return students_Array;
     }
 
+    /********************************************
+     * author: wangziquan
+     * @param: username
+     * @param: password
+     * 学生登录
+     ********************************************/
+    public boolean loginSystem(String username, String password) {
+        Connection conn = MysqlConnection.getMysqlConnection().getCon();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            pst = conn.prepareStatement("SELECT * FROM student WHERE stu_id = ? AND stu_password = ?");
+            pst.setString(1, username);
+            pst.setString(2, password);
+            rs = pst.executeQuery();
+
+            if (rs.next()) return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
 }
 
 

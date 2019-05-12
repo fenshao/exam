@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,6 +23,14 @@ public class Base extends HttpServlet {
         MysqlConnection mysqlConnection = MysqlConnection.getMysqlConnection();
 
         Connection conn = mysqlConnection.getCon();
+
+        String username = req.getParameter("username");
+        System.out.println(username);
+
+        PrintWriter out = resp.getWriter();
+
+        out.write(username);
+        out.close();
 
         Statement st = null;
 

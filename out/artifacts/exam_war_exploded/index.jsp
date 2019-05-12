@@ -18,12 +18,12 @@
 		<p>请开始你的表演</p>
 	</div>
 	
-	<form action="" method="post" id="loginForm">
+	<form action="loginServlet" method="post" id="loginForm">
 		<div>
-			<input type="text" name="username" class="username" placeholder="用户名" autocomplete="off"/>
+			<input type="text" name="username" id="username" class="username" placeholder="用户名" autocomplete="off"/>
 		</div>
 		<div>
-			<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
+			<input type="password" name="password" id="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
 		</div>
 		<button id="submit" type="submit">登 陆</button>
 	</form>
@@ -41,6 +41,5 @@
 <script src="js/supersized-init.js"></script>
 <!--表单验证-->
 <script src="js/jquery.validate.min.js?var1.14.0"></script>
-
 </body>
 </html>
