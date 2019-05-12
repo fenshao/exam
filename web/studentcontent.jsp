@@ -22,25 +22,16 @@
 		</div>
 		<ul>
 			<li class="nav-item">
-				<a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span>学院服务</span><i class="my-icon nav-more"></i></a>
+				<a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span>考试管理</span><i class="my-icon nav-more"></i></a>
 				<ul>
-					<li><a href="javascript:;"><span>文件上传</span></a></li>
-					<li><a href="javascript:;"><span>离校登记</span></a></li>
-					<li><a href="javascript:;"><span>在线表单</span></a></li>
-				</ul>
-			</li>
-			<li class="nav-item">
-				<a href="javascript:;"><i class="my-icon nav-icon icon_2"></i><span>通知通告</span><i class="my-icon nav-more"></i></a>
-				<ul>
-					<li><a href="javascript:;"><span>院内新闻</span></a></li>
-					<li><a href="javascript:;"><span>作业公告</span></a></li>
-					<li><a href="javascript:;" _link="../public/announce.php"><span>院内通知</span></a></li>
+					<li><a href="javascript:;"><span>查看考试</span></a></li>
+					<li><a href="javascript:;"><span>进入考试</span></a></li>
 				</ul>
 			</li>
 			<li class="nav-item">
 				<a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span>个人设置</span><i class="my-icon nav-more"></i></a>
 				<ul>
-					<li><a href="javascript:;"><span>完善信息</span></a></li>
+					<li><a href="javascript:;"><span>修改信息</span></a></li>
 					<li><a href="javascript:;"><span>修改密码</span></a></li>
 				</ul>
 			</li>
