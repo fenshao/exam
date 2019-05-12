@@ -8,7 +8,16 @@
 <meta name="keywords" content="jquery特效,表单验证,登录界面,表单提交,表单验证插件,登录界面模板,登录模板,css3登陆界面" />
 <meta name="description" content="jquery css3带背景透明登录注册表单提交代码。" />
 <link rel="stylesheet" href="css/style.css" />
-
+	<style>
+		.option {
+			margin-top: 25px;
+			width: 300px;
+			height: 42px;
+			border-radius: 6px;
+			padding: 0 15px;
+			background: rgba(45,45,45,.15);
+		}
+	</style>
 <body>
 
 <div class="login-container">
@@ -19,13 +28,20 @@
 	</div>
 	
 	<form action="loginServlet" method="post" id="loginForm">
+		<span style="background: red">${message}</span>
 		<div>
 			<input type="text" name="username" id="username" class="username" placeholder="用户名" autocomplete="off"/>
 		</div>
+		<select class="option" name="option">
+			 <option value="0" selected>学生</option>
+			 <option value="1">教师</option>
+		</select>
 		<div>
 			<input type="password" name="password" id="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
 		</div>
-		<button id="submit" type="submit">登 陆</button>
+		<button id="submit" type="submit">登 录</button>
+
+
 	</form>
 
 	<a href="register.jsp">
