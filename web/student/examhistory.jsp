@@ -25,13 +25,13 @@
 			            <th scope="row">1</th>
 			            <td>小明</td>
 			            <td>90</td>
-			            <td><button type="submit" class="btn btn-primary btn-sm"><span class="oi oi-eye" title="查看试卷" aria-hidden="true"></button></td>
+			            <td><button type="submit" class="btn btn-primary btn-sm"><span class="oi oi-eye" title="查看试卷" aria-hidden="true"></span></button></td>
 			        </tr>
 			        <tr>
 			            <th scope="row">2</th>
 			            <td>小红</td>
 			            <td>80</td>
-			            <td><button type="submit" class="btn btn-primary btn-sm"><span class="oi oi-eye" title="查看试卷" aria-hidden="true"></button></td>
+			            <td><button type="submit" class="btn btn-primary btn-sm"><span class="oi oi-eye" title="查看试卷" aria-hidden="true"></span></button></td>
 			        </tr>
 			    </tbody>
 			</table>
