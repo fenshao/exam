@@ -18,7 +18,6 @@ public class loginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req, resp);
 
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
@@ -29,9 +28,10 @@ public class loginServlet extends HttpServlet {
         String optionID = req.getParameter("option");
         boolean result = false;
 
-        System.out.println(optionID);
+        System.out.println(username + " " + password);
 
-        if (optionID == "0") { //学生
+
+        if (optionID.equals("0")) { //学生
             //判断密码是否正确
             StudentService studentService = new StudentService();
             result = studentService.loginSystem(username, password);
@@ -45,7 +45,7 @@ public class loginServlet extends HttpServlet {
             req.getSession().setAttribute("username", username);
             req.getSession().setMaxInactiveInterval(6000);
 
-            if (optionID == "0") resp.sendRedirect("studentcontent.jsp");
+            if (optionID.equals("0")) resp.sendRedirect("studentcontent.jsp");
             else resp.sendRedirect("teachercontent.jsp");
         }
         else {

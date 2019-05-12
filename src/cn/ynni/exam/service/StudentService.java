@@ -24,11 +24,12 @@ public class StudentService {
      * @param stuSex
      * @return void
      */
-    public void insertStudent(String stuId, String stuPassword, String stuName, String stuSex) {
+    public boolean insertStudent(String stuId, String stuPassword, String stuName, String stuSex) {
         // 取得数据库连接
         MysqlConnection mysqlConnection = MysqlConnection.getMysqlConnection();
         Connection conn = mysqlConnection.getCon();
         String sql = "insert into student (stu_id, stu_password, stu_name, stu_sex) values(?, ?, ?, ?)";
+        int rs = 0;
 
         PreparedStatement stm = null;
         try {
@@ -38,11 +39,13 @@ public class StudentService {
             stm.setString(2, stuPassword);
             stm.setString(3, stuName);
             stm.setString(4, stuSex);
-            stm.executeUpdate();
+            rs = stm.executeUpdate();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        return (rs != 0);
     }
 
     /**
@@ -173,7 +176,7 @@ public class StudentService {
             pst.setString(2, password);
             rs = pst.executeQuery();
 
-            if (rs.next()) return true;
+            if (rs != null) return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }

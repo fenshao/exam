@@ -15,7 +15,8 @@
 		<p>请开始你的表演</p>
 	</div>
 	
-	<form action="" method="post" id="registerForm">
+	<form action="registerServlet" method="post" id="registerForm">
+		<span style="background: red">${message}</span>
 		<div>
 			<input type="text" name="username" class="username" placeholder="您的用户名" autocomplete="off"/>
 		</div>
@@ -26,10 +27,10 @@
 			<input type="password" name="confirm_password" class="confirm_password" placeholder="再次输入密码" oncontextmenu="return false" onpaste="return false" />
 		</div>
 		<div>
-			<input type="text" name="phone_number" class="phone_number" placeholder="输入手机号码" autocomplete="off" id="number"/>
+			<input type="text" name="number" class="phone_number" placeholder="姓名" autocomplete="off" id="number"/>
 		</div>
 		<div>
-			<input type="email" name="email" class="email" placeholder="输入邮箱地址" oncontextmenu="return false" onpaste="return false" />
+			<input type="email" name="sex" class="email" placeholder="性别" oncontextmenu="return false" onpaste="return false" />
 		</div>
 
 		<button id="submit" type="submit">注 册</button>
