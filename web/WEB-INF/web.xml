@@ -22,4 +22,14 @@
         <servlet-name>registerServlet</servlet-name>
         <url-pattern>/registerServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>lookScoreServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.lookScoreServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>lookScoreServlet</servlet-name>
+        <url-pattern>/lookScoreServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

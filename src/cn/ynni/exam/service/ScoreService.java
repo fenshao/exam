@@ -10,7 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import cn.ynni.exam.model.Score;
+import cn.ynni.exam.model.ScoreInfo;
 import cn.ynni.exam.utils.MysqlConnection;
 
 /**
@@ -49,36 +52,47 @@ public class ScoreService {
 		}
 		return false;
 	}
-	
-	public ResultSet selectScore(int scoreId) {
+
+	/********************************************
+	 * author: wangziquan
+	 * @param: stuId
+	 * 查询信息该学生的考试信息
+	 ********************************************/
+	public ArrayList<ScoreInfo> selectInfo(String stuID) {
+		ArrayList<ScoreInfo> arrayList = new ArrayList<ScoreInfo>();
 		Connection conn = MysqlConnection.getMysqlConnection().getCon();
-		String sql = "select * teacher where score_id = ?";
-		ResultSet rs = null;
-		PreparedStatement ps = null;
+		PreparedStatement stm = null;
+		ResultSet resultSet = null;
+		String sql = "SELECT paper.paper_id\n" +
+				"\t, paper.title\n" +
+				"\t, R.stu_name\n" +
+				"\t, R.score\n" +
+				"\tFROM (\n" +
+				"\t\tSELECT score.paper_id\n" +
+				"\t\t, score.score\n" +
+				"\t\t, student.stu_name\n" +
+				"\t\tFROM score JOIN student on ? = student.stu_id\n" +
+				"\t) AS R JOIN paper on R.paper_id = paper.paper_id";
+
 		try {
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, scoreId);
-			rs = ps.executeQuery();
+			stm = conn.prepareStatement(sql);
+			stm.setString(1, stuID);
+			resultSet = stm.executeQuery();
+
+			while (resultSet.next()) {
+				ScoreInfo info = new ScoreInfo();
+
+				info.setPaperId(resultSet.getInt(1));
+				info.setTitle(resultSet.getString(2));
+				info.setStuName(resultSet.getString(3));
+				info.setScore(resultSet.getInt(4));
+
+				arrayList.add(info);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			//关闭连接
-			if (ps != null) {
-				try {
-					/*
-					if (rs != null) {
-						rs.close();
-					}
-					*/
-					ps.close();
-					if (conn != null) {
-						conn.close();
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 		}
-		return rs;
+
+		return arrayList;
 	}
 }
