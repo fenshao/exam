@@ -138,13 +138,14 @@ public class QuestionService {
 
             while (resultSet.next()) {
                 Question question = new Question();
-                question.setTitle(resultSet.getString(1));
-                question.setPaperId(resultSet.getInt(2));
-                question.setOptionA(resultSet.getString(3));
-                question.setOptionB(resultSet.getString(4));
-                question.setOptionC(resultSet.getString(5));
-                question.setOptionD(resultSet.getString(6));
-                question.setAnswer(resultSet.getString(7));
+                question.setQuestionId(resultSet.getInt(1));
+                question.setTitle(resultSet.getString(2));
+                question.setPaperId(resultSet.getInt(3));
+                question.setOptionA(resultSet.getString(4));
+                question.setOptionB(resultSet.getString(5));
+                question.setOptionC(resultSet.getString(6));
+                question.setOptionD(resultSet.getString(7));
+                question.setAnswer(resultSet.getString(8));
 
                 questionArrayList.add(question);
             }
@@ -192,5 +193,4 @@ public class QuestionService {
 
         return question;
     }
-
 }

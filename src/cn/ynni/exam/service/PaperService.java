@@ -54,6 +54,8 @@ public class PaperService {
                 Paper pa = new Paper();
                 pa.setPaperId(rs.getInt("paper_id"));
                 pa.setTitle(rs.getString("title"));
+                sArray.add(pa);
+
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -108,5 +110,34 @@ public class PaperService {
             e.printStackTrace();
         }
         return true;
+    }
+
+
+    /********************************************
+     * author: wangziquan
+     * @param: paperId
+     * 查询试题名称 根据paperId查询
+     ********************************************/
+    public Paper oneselectInfo(int paperId) {
+        Connection conn = MysqlConnection.getMysqlConnection().getCon();
+        PreparedStatement stm = null;
+        ResultSet resultSet = null;
+        Paper paper = new Paper();
+
+        try {
+            stm = conn.prepareStatement("SELECT * from paper WHERE paper_id = ?");
+
+            stm.setInt(1, paperId);
+            resultSet = stm.executeQuery();
+
+            while (resultSet.next()) {
+                paper.setPaperId(resultSet.getInt(1));
+                paper.setTitle(resultSet.getString(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return paper;
     }
 }

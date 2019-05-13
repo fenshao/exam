@@ -182,6 +182,7 @@ public class StudentService {
                 student.setStuPassword(rs.getString(2));
                 student.setStuName(rs.getString(3));
                 student.setStuSex(rs.getString(4));
+
             }
 
         } catch (SQLException e) {

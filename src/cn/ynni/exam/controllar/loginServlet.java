@@ -42,7 +42,7 @@ public class loginServlet extends HttpServlet {
                 req.getSession().setAttribute("username", username);
                 req.getSession().setMaxInactiveInterval(6000);
 
-                resp.sendRedirect("studentcontent.jsp");
+                resp.sendRedirect("studentIndex.jsp");
             }
             else {
                 req.setAttribute("message", "用户名或密码错误");

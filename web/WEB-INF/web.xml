@@ -32,4 +32,25 @@
         <servlet-name>lookScoreServlet</servlet-name>
         <url-pattern>/lookScoreServlet</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SelectAllTestServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.SelectAllTestServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>SelectAllTestServlet</servlet-name>
+        <url-pattern>/SelectAllTestServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TestServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.TestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/TestServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

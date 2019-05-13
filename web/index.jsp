@@ -48,8 +48,6 @@
 			</div>
 		</div>
 		<button id="submit" type="submit">登 录</button>
-
-
 	</form>
 	<div class="mb-3 text-center">
 		<a href="register.jsp">
