@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Server
-  Date: 2019/5/13
-  Time: 12:34
+  Date: 2019/5/14
+  Time: 13:42
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -34,7 +34,7 @@
                                 <li role="presentation" class="divider"></li>
                                 <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
                                 <li role="presentation" class="divider"></li>
-                                <li><a href="/book/login.jsp">退出</a></li>
+                                <li><a href="">退出</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -51,47 +51,45 @@
         <div class="col-lg-2 bootstrap-admin-col-left">
             <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
                 <li>
-                    <a href="SelectAllTestServlet"><i class="glyphicon glyphicon-chevron-right"></i>我的考试</a>
+                    <a href="AdminScoreServlet"><i class="glyphicon glyphicon-chevron-right"></i>查询成绩</a>
                 </li>
                 <li>
-                    <a href="lookScoreServlet"><i class="glyphicon glyphicon-chevron-right"></i>查看成绩</a>
+                    <a href="allUserInformationServlet"><i class="glyphicon glyphicon-chevron-right"></i>学生管理</a>
                 </li>
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i>试卷查询</a>
+                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i>试卷管理</a>
                 </li>
             </ul>
         </div>
         <!--右边面板-->
         <div class="col-lg-10">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">我的考试</div>
-                        <div class="panel-body">
-                            <ul>
-                                <li>查看考试、进行考试</li>
-                            </ul>
-                        </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="text-muted bootstrap-admin-box-title">试卷信息</div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">查看成绩</div>
-                        <div class="panel-body">
-                            <ul>
-                                <li>查看成绩</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">试卷查询</div>
-                        <div class="panel-body">
-                            <ul>
-                                <li>查询已有的试卷</li>
-                            </ul>
-                        </div>
+                    <div class="panel-body">
+                        <table id="data_list" class="table table-hover table-bordered"  cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>试卷编号</th>
+                                <th>试卷名称</th>
+                                <th>成绩</th>
+                            </tr>
+                            </thead>
+                            <c:forEach items="${allStudent}" var="student">
+                                <tbody>
+                                <tr>
+
+                                    <td>${student.stuName}</td>
+                                    <td>${student.paperId}</td>
+                                    <td>${student.title}</td>
+                                    <td>${student.score}</td>
+                                </tr>
+                                </tbody>
+                            </c:forEach>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -128,7 +126,7 @@
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">手机号</label>
                         <div class="col-lg-7">
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="请输入您的手机号" value="" />
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="请输入您的性别" value="" />
                             <label class="control-label" for="name" style="display: none;"></label>
                         </div>
                     </div>
