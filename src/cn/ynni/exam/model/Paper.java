@@ -3,7 +3,7 @@ package cn.ynni.exam.model;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
-public class Paper {
+public class Paper  {
     private int paperId;
     private String title;
 

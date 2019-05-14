@@ -35,7 +35,7 @@
                                 <li role="presentation" class="divider"></li>
                                 <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
                                 <li role="presentation" class="divider"></li>
-                                <li><a href="/book/login.jsp">退出</a></li>
+                                <li><a href="index.jsp">退出</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -58,7 +58,7 @@
                     <a href="lookScoreServlet"><i class="glyphicon glyphicon-chevron-right"></i>查看成绩</a>
                 </li>
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i>试卷查询</a>
+                    <a href="selectPaper.jsp"><i class="glyphicon glyphicon-chevron-right"></i>试卷查询</a>
                 </li>
             </ul>
         </div>

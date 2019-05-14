@@ -59,6 +59,8 @@ public class PaperService {
             }
         }catch (SQLException e){
             e.printStackTrace();
+        }finally{
+            mysqlConnection.closeResuletSet(rs);
         }
         return sArray;
     }
@@ -118,7 +120,7 @@ public class PaperService {
      * @param: paperId
      * 查询试题名称 根据paperId查询
      ********************************************/
-    public Paper oneselectInfo(int paperId) {
+    public Paper oneselectInfo(String paperId) {
         Connection conn = MysqlConnection.getMysqlConnection().getCon();
         PreparedStatement stm = null;
         ResultSet resultSet = null;
@@ -126,8 +128,8 @@ public class PaperService {
 
         try {
             stm = conn.prepareStatement("SELECT * from paper WHERE paper_id = ?");
-
-            stm.setInt(1, paperId);
+            int id = Integer.parseInt(paperId);
+            stm.setInt(1, id);
             resultSet = stm.executeQuery();
 
             while (resultSet.next()) {

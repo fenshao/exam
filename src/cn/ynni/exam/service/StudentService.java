@@ -194,6 +194,7 @@ public class StudentService {
         MysqlConnection mysqlConnection = MysqlConnection.getMysqlConnection();
         Connection conn = mysqlConnection.getCon();
         String sql = "select * from student";
+
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
