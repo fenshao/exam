@@ -124,6 +124,32 @@ public class StudentService {
         }
         return true;
     }
+
+    /**
+     * 更新名字和性别
+     * @param stuId
+     * @param stuName
+     * @param stuSex
+     * @return
+     */
+    public Boolean  updateNameAndSex(String stuId,String stuName,String stuSex){
+        MysqlConnection mysqlConnection = MysqlConnection.getMysqlConnection();
+        Connection conn = mysqlConnection.getCon();
+
+        String sql = "update student set stu_name = ?,stu_sex = ? where stu_id = ?;";
+        PreparedStatement stm = null;
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setString(1,stuName);
+            stm.setString(2,stuSex);
+            stm.setString(3,stuId);
+            stm.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return true;
+    }
     /**
      * fun: 通过stuId查询一个学生的所有信息
      * @param name

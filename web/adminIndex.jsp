@@ -101,7 +101,7 @@
 
 <!--个人资料-->
 <!-- 模态框（Modal） -->
-<form  class="form-horizontal"  method="post" action="/book/AdminServlet">
+<form  class="form-horizontal"  method="post" action="uNameAndSexServlet">
     <div class="modal fade" id="updateinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -126,17 +126,10 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">手机号</label>
+                        <label for="" class="col-sm-3 control-label">性别</label>
                         <div class="col-lg-7">
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="请输入您的性别" value="" />
-                            <label class="control-label" for="name" style="display: none;"></label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">邮箱</label>
-                        <div class="col-lg-7">
-                            <input type="text" class="form-control" id="email" name="email" placeholder="请输入您的邮箱" value="" />
-                            <label class="control-label" for="name" style="display: none;"></label>
+                            <input type="text" class="form-control" id="sex" name="sex" placeholder="请输入您的性别" value="" />
+                            <label class="control-label" for="sex" style="display: none;"></label>
                         </div>
                     </div>
 
@@ -156,7 +149,7 @@
 
 <!--修改密码-->
 <!-- 模态框（Modal） -->
-<form  class="form-horizontal"  method="post" action="/book/AdminServlet">
+<form  class="form-horizontal"  method="post" action="uPasswordServlet">
     <div class="modal fade" id="updatepwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -200,6 +193,7 @@
         </div><!-- /.modal -->
     </div>
 </form>
+
 </body>
 </html>
 

@@ -133,4 +133,14 @@
         <url-pattern>/AdminScoreServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>uNameAndSexServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.uNameAndSexServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>uNameAndSexServlet</servlet-name>
+        <url-pattern>/uNameAndSexServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>
