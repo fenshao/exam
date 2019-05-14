@@ -95,4 +95,41 @@ public class ScoreService {
 
 		return arrayList;
 	}
+
+	public ArrayList<ScoreInfo> selectInfo2() {
+		ArrayList<ScoreInfo> arrayList = new ArrayList<ScoreInfo>();
+		Connection conn = MysqlConnection.getMysqlConnection().getCon();
+		PreparedStatement stm = null;
+		ResultSet resultSet = null;
+		String sql = "SELECT paper.paper_id\n" +
+				"\t, paper.title\n" +
+				"\t, R.stu_name\n" +
+				"\t, R.score\n" +
+				"\tFROM (\n" +
+				"\t\tSELECT score.paper_id\n" +
+				"\t\t, score.score\n" +
+				"\t\t, student.stu_name\n" +
+				"\t\tFROM score JOIN student on score.stu_id = student.stu_id\n" +
+				"\t) AS R JOIN paper on R.paper_id = paper.paper_id";
+
+		try {
+			stm = conn.prepareStatement(sql);
+			resultSet = stm.executeQuery();
+
+			while (resultSet.next()) {
+				ScoreInfo info = new ScoreInfo();
+
+				info.setPaperId(resultSet.getInt(1));
+				info.setTitle(resultSet.getString(2));
+				info.setStuName(resultSet.getString(3));
+				info.setScore(resultSet.getInt(4));
+
+				arrayList.add(info);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return arrayList;
+	}
 }

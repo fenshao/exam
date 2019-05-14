@@ -1,8 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Server
-  Date: 2019/5/13
-  Time: 12:34
+  Date: 2019/5/14
+  Time: 13:54
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -34,7 +35,7 @@
                                 <li role="presentation" class="divider"></li>
                                 <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
                                 <li role="presentation" class="divider"></li>
-                                <li><a href="/book/login.jsp">退出</a></li>
+                                <li><a href="">退出</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -64,34 +65,32 @@
         <!--右边面板-->
         <div class="col-lg-10">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">我的考试</div>
-                        <div class="panel-body">
-                            <ul>
-                                <li>查看考试、进行考试</li>
-                            </ul>
-                        </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="text-muted bootstrap-admin-box-title">试卷信息</div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">查看成绩</div>
-                        <div class="panel-body">
-                            <ul>
-                                <li>查看成绩</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">试卷查询</div>
-                        <div class="panel-body">
-                            <ul>
-                                <li>查询已有的试卷</li>
-                            </ul>
-                        </div>
+                    <div class="panel-body">
+                        <table id="data_list" class="table table-hover table-bordered"  cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>试卷编号</th>
+                                <th>试卷名称</th>
+                                <th>成绩</th>
+                            </tr>
+                            </thead>
+                            <c:forEach items="${infoArrayList}" var="student">
+                                <tbody>
+                                <tr>
+
+                                    <td>${student.stuName}</td>
+                                    <td>${student.paperId}</td>
+                                    <td>${student.title}</td>
+                                    <td>${student.score}</td>
+                                </tr>
+                                </tbody>
+                            </c:forEach>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -101,7 +100,7 @@
 
 <!--个人资料-->
 <!-- 模态框（Modal） -->
-<form  class="form-horizontal"  method="post" action="uNameAndSexServlet">
+<form  class="form-horizontal"  method="post" action="/book/AdminServlet">
     <div class="modal fade" id="updateinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -126,10 +125,17 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">性别</label>
+                        <label for="" class="col-sm-3 control-label">手机号</label>
                         <div class="col-lg-7">
-                            <input type="text" class="form-control" id="sex" name="sex" placeholder="请输入您的性别" value="" />
-                            <label class="control-label" for="sex" style="display: none;"></label>
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="请输入您的性别" value="" />
+                            <label class="control-label" for="name" style="display: none;"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">邮箱</label>
+                        <div class="col-lg-7">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="请输入您的邮箱" value="" />
+                            <label class="control-label" for="name" style="display: none;"></label>
                         </div>
                     </div>
 
@@ -149,7 +155,7 @@
 
 <!--修改密码-->
 <!-- 模态框（Modal） -->
-<form  class="form-horizontal"  method="post" action="uPasswordServlet">
+<form  class="form-horizontal"  method="post" action="/book/AdminServlet">
     <div class="modal fade" id="updatepwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

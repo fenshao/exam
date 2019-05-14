@@ -52,7 +52,7 @@
         <div class="col-lg-2 bootstrap-admin-col-left">
             <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
                 <li>
-                    <a href=""><i class="glyphicon glyphicon-chevron-right"></i>查询成绩</a>
+                    <a href="AdminScoreServlet"><i class="glyphicon glyphicon-chevron-right"></i>查询成绩</a>
                 </li>
                 <li>
                     <a href="allUserInformationServlet"><i class="glyphicon glyphicon-chevron-right"></i>学生管理</a>
@@ -68,10 +68,33 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">学生管理</div>
+                            <div class="text-muted bootstrap-admin-box-title">学生查询</div>
                         </div>
                         <div class="panel-body">
-                            <form action="#" method="post" class="form-horizontal">
+                            <form action="SelectStudentServlet" method="post" class="form-horizontal">
+                                <input type="hidden" name="tid" value="1"/>
+                                <input type="hidden" name="show" value="1"/>
+                                <div class="col-lg-7 form-group">
+                                    <label class="col-lg-4 control-label">学生姓名</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" id="bookName" name="name" type="text" value="">
+                                        <label class="control-label" for="name" style="display: none;"></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 form-group">
+                                    <button type="submit" class="btn btn-primary" id="btn_query">查询</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="text-muted bootstrap-admin-box-title">添加学生</div>
+                        </div>
+                        <div class="panel-body">
+                            <form action="allUserInformationServlet" method="post" class="form-horizontal">
                                 <div class="col-lg-3 form-group">
                                     <button type="button" class="btn btn-primary" id="btn_add" data-toggle="modal" data-target="#addModal">添加学生</button>
                                 </div>
@@ -79,7 +102,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -224,7 +246,7 @@
 
 <!--添加学生-->
 <!-- 模态框（Modal） -->
-<form  class="form-horizontal"  method="post" action="registerServlet">
+<form  class="form-horizontal"  method="post" action="AddStudentServlet">
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

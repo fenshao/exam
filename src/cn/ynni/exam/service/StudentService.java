@@ -126,25 +126,29 @@ public class StudentService {
     }
     /**
      * fun: 通过stuId查询一个学生的所有信息
-     * @param stuId
+     * @param name
      * @return Student
      */
-    public Student queryStudent(String stuId){
-        Student student = new Student();
+    public ArrayList<Student> queryStudent(String names){
+        ArrayList<Student> arrayList = new ArrayList<Student>();
         MysqlConnection mysqlConnection = MysqlConnection.getMysqlConnection();
         Connection conn = mysqlConnection.getCon();
-        String sql = "select * from student where stu_id="+stuId;
+        String sql = "select * from student where stu_name LIKE '%" + names + "%' ";
+        System.out.println(sql);
         PreparedStatement stm = null;
         ResultSet rs = null;
+
         try {
             stm = conn.prepareStatement(sql);
             rs = stm.executeQuery();
             if(rs.next()){
+                Student student = new Student();
                 student.setStuId(rs.getString("stu_Id"));
                 student.setStuName(rs.getString("stu_name"));
                 student.setStuPassword(rs.getString("stu_password"));
                 student.setStuSex(rs.getString("stu_sex"));
 
+                arrayList.add(student);
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -152,7 +156,7 @@ public class StudentService {
         }finally{
             mysqlConnection.closeResuletSet(rs);
         }
-        return student;
+        return arrayList;
     }
 
     /**

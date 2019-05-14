@@ -33,11 +33,12 @@ public class loginServlet extends HttpServlet {
             //判断密码是否正确
             StudentService studentService = new StudentService();
             Student student = studentService.loginSystem(username, password);
+            System.out.println(student.getStuId());
 
             if (student.getStuId() != null) {
                 //设置session
                 req.getSession().setAttribute("username", username);
-                req.getSession().setMaxInactiveInterval(6000);
+                req.getSession().setMaxInactiveInterval(600);
 
                 resp.sendRedirect("studentIndex.jsp");
             }

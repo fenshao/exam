@@ -104,13 +104,33 @@
     </servlet-mapping>
 
     <servlet>
-    <servlet-name>uNameAndSexServlet</servlet-name>
-    <servlet-class>cn.ynni.exam.controllar.uNameAndSexServlet</servlet-class>
+        <servlet-name>AddStudentServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.AddStudentServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>uNameAndSexServlet</servlet-name>
-        <url-pattern>/uNameAndSexServlet</url-pattern>
+        <servlet-name>AddStudentServlet</servlet-name>
+        <url-pattern>/AddStudentServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SelectStudentServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.SelectStudentServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SelectStudentServlet</servlet-name>
+        <url-pattern>/SelectStudentServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminScoreServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.AdminScoreServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminScoreServlet</servlet-name>
+        <url-pattern>/AdminScoreServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>
