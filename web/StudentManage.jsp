@@ -224,7 +224,7 @@
 
 <!--添加学生-->
 <!-- 模态框（Modal） -->
-<form  class="form-horizontal"  method="post" action="/book/AddUserServlet">
+<form  class="form-horizontal"  method="post" action="registerServlet">
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
