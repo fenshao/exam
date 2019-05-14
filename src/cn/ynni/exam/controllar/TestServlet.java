@@ -13,6 +13,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class TestServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,7 +31,7 @@ public class TestServlet extends HttpServlet {
 
         //查看试题名称
         PaperService paperService = new PaperService();
-        Paper paper = paperService.oneselectInfo(Integer.parseInt(paperId));
+        Paper paper = paperService.oneselectInfo(paperId);
 
         req.setAttribute("title", paper.getTitle());
 

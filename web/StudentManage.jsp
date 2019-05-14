@@ -35,7 +35,7 @@
                                 <li role="presentation" class="divider"></li>
                                 <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
                                 <li role="presentation" class="divider"></li>
-                                <li><a href="">退出</a></li>
+                                <li><a href="index.jsp">退出</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -58,7 +58,7 @@
                     <a href="allUserInformationServlet"><i class="glyphicon glyphicon-chevron-right"></i>学生管理</a>
                 </li>
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i>试卷管理</a>
+                    <a href="selectPaper.jsp"><i class="glyphicon glyphicon-chevron-right"></i>试卷管理</a>
                 </li>
             </ul>
         </div>

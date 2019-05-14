@@ -3,7 +3,7 @@ package cn.ynni.exam.model;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
-public class Paper extends ArrayList<Paper> {
+public class Paper  {
     private int paperId;
     private String title;
 
@@ -23,8 +23,4 @@ public class Paper extends ArrayList<Paper> {
         this.title = title;
     }
 
-    @Override
-    public Stream<Paper> stream() {
-        return null;
-    }
 }

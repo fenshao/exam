@@ -11,6 +11,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class SelectStudentServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,7 +29,7 @@ public class SelectStudentServlet extends HttpServlet {
         if (name != "") allStudent = studentService.queryStudent(name);
         else allStudent = studentService.queryAllStudent();
 
-       req.setAttribute("allStudent", allStudent);
-       req.getRequestDispatcher("StudentManage.jsp").forward(req, resp);
+        req.setAttribute("allStudent", allStudent);
+        req.getRequestDispatcher("StudentManage.jsp").forward(req, resp);
     }
 }
