@@ -76,6 +76,7 @@
                                 <div class="text-center form-group">
                                     <button type="submit" class="btn btn-primary" id="btn_query">交卷离开</button>
                                 </div>
+
                             </form>
                         </div>
                     </div>
@@ -85,6 +86,13 @@
     </div>
 </div>
 <script language="JavaScript">
+    $(function () {
+       $.ajax({
+
+       })
+    })
+
+
     var time = $("#time").val();
     var maxtime = time * 1
     function CountDown(){
@@ -96,6 +104,8 @@
             document.all["timer"].innerHTML = msg;
             if(maxtime == 5*60) alert('注意，还有5分钟!');
             --maxtime;
+
+            $.ajax()
         }
         else{
             clearInterval(timer);
