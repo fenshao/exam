@@ -25,7 +25,7 @@ public class selectPaperServlet extends HttpServlet {
             if(Id=="")allPaper = paperService.selectPerpar();
             else{
                 Integer paperId = Integer.parseInt(Id);
-                allPaper = paperService.oneselectInfo(paperId);
+                //allPaper = paperService.oneselectInfo(paperId);
 
                 System.out.println(paperId);
             }

@@ -30,7 +30,9 @@ public class TestServlet extends HttpServlet {
         Paper paper = paperService.oneselectInfo(Integer.parseInt(paperId));
 
         req.setAttribute("title", paper.getTitle());
-
+        req.getSession().setAttribute("paperId", paperId);
+        req.getSession().setMaxInactiveInterval(6000);
+        req.setAttribute("time", "1800");
         req.setAttribute("questionArrayList", questionArrayList);
 
         req.getRequestDispatcher("/TestPaper.jsp").forward(req, resp);

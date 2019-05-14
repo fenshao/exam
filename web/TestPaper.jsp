@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Server
@@ -5,7 +6,6 @@
   Time: 17:12
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -44,9 +44,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">剩余时间</div>
+                        <div class="panel-heading">距离考试结束还有</div>
                         <div class="panel-body" >
-                            <div id="timer" style="margin-left: 450px"></div>
+                            <div id="timer" name="time" style="margin-left: 450px"></div>
+                            <input id="time" value="${time}" type="hidden">
                         </div>
                     </div>
                 </div>
@@ -54,19 +55,19 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">${title}</div>
+                        <div class="panel-heading"><span name="paperId">${paperId}</span>、${title}</div>
                         <div class="panel-body">
-                            <form action="#" method="post" class="form-horizontal">
+                            <form action="AnswerServlet" method="post" class="form-horizontal">
                                 <c:forEach items="${questionArrayList}" var="choice" >
 
                                     <span> ${choice.questionId}、 ${choice.title}</span>
                                     <br />
                                     <br />
                                     <lable>
-                                        <p class="sp1"><input type="radio" name="" value="1" id="xz${choice.questionId}" />A、${choice.optionA}</p>
-                                        <p class="sp1"><input type="radio" name="" value="2" id="xz${choice.questionId}"/>B、${choice.optionB}</p>
-                                        <p class="sp1"><input type="radio" name="" value="3" id="xz${choice.questionId}"/>C、${choice.optionC}</p>
-                                        <p class="sp1"><input type="radio" name="" value="4" id="xz${choice.questionId}" />D、${choice.optionD}</p>
+                                        <p class="sp1"><input type="checkbox" name="${choice.questionId}" value="1" id="xz${choice.questionId}" />A、${choice.optionA}</p>
+                                        <p class="sp1"><input type="checkbox" name="${choice.questionId}" value="2" id="xz${choice.questionId}"/>B、${choice.optionB}</p>
+                                        <p class="sp1"><input type="checkbox" name="${choice.questionId}" value="3" id="xz${choice.questionId}"/>C、${choice.optionC}</p>
+                                        <p class="sp1"><input type="checkbox" name="${choice.questionId}" value="4" id="xz${choice.questionId}" />D、${choice.optionD}</p>
                                     </lable>
                                     <br />
                                     <br />
@@ -84,12 +85,14 @@
     </div>
 </div>
 <script language="JavaScript">
-    var maxtime = 1800*1
+    var time = $("#time").val();
+    var maxtime = time * 1
     function CountDown(){
         if(maxtime>=0){
             minutes = Math.floor(maxtime/60);
             seconds = Math.floor(maxtime%60);
-            msg = "距离考试结束还有"+minutes+"分"+seconds+"秒";
+            hour = Math.floor(minutes / 60);
+            msg = hour + " h " + minutes + " m " + seconds + " s ";
             document.all["timer"].innerHTML = msg;
             if(maxtime == 5*60) alert('注意，还有5分钟!');
             --maxtime;

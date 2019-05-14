@@ -153,5 +153,15 @@
         <url-pattern>/selectPaperServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AnswerServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.AnswerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AnswerServlet</servlet-name>
+        <url-pattern>/AnswerServlet</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

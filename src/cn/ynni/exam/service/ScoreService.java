@@ -47,10 +47,7 @@ public class ScoreService {
 				}
 			}
 		}
-		if (rs != 0) {
-			return true;
-		}
-		return false;
+		return rs != 0;
 	}
 
 	/********************************************
@@ -63,16 +60,22 @@ public class ScoreService {
 		Connection conn = MysqlConnection.getMysqlConnection().getCon();
 		PreparedStatement stm = null;
 		ResultSet resultSet = null;
-		String sql = "SELECT paper.paper_id\n" +
+		String sql = "SELECT  R1.stu_name\n" +
+				"\t, R1.paper_id\n" +
 				"\t, paper.title\n" +
-				"\t, R.stu_name\n" +
-				"\t, R.score\n" +
-				"\tFROM (\n" +
-				"\t\tSELECT score.paper_id\n" +
-				"\t\t, score.score\n" +
-				"\t\t, student.stu_name\n" +
-				"\t\tFROM score JOIN student on ? = student.stu_id\n" +
-				"\t) AS R JOIN paper on R.paper_id = paper.paper_id";
+				"\t, R1.score\n" +
+				"FROM(\n" +
+				"\tSELECT R.stu_id\n" +
+				"\t\t, R.stu_name\n" +
+				"\t\t,score.score\n" +
+				"\t\t,score.paper_id\n" +
+				"\t\tFROM(\n" +
+				"\t\t\t\tSELECT student.stu_id\n" +
+				"\t\t\t\t, student.stu_name\n" +
+				"\t\t\t\tFROM student \n" +
+				"\t\t\t\tWHERE student.stu_id = ? \n" +
+				"\t\t) AS R JOIN score ON score.stu_id = R.stu_id\n" +
+				") AS R1 JOIN paper ON R1.paper_id = paper.paper_id";
 
 		try {
 			stm = conn.prepareStatement(sql);
@@ -82,9 +85,9 @@ public class ScoreService {
 			while (resultSet.next()) {
 				ScoreInfo info = new ScoreInfo();
 
-				info.setPaperId(resultSet.getInt(1));
-				info.setTitle(resultSet.getString(2));
-				info.setStuName(resultSet.getString(3));
+				info.setStuName(resultSet.getString(1));
+				info.setPaperId(resultSet.getInt(2));
+				info.setTitle(resultSet.getString(3));
 				info.setScore(resultSet.getInt(4));
 
 				arrayList.add(info);
@@ -109,7 +112,7 @@ public class ScoreService {
 				"\t\tSELECT score.paper_id\n" +
 				"\t\t, score.score\n" +
 				"\t\t, student.stu_name\n" +
-				"\t\tFROM score JOIN student on score.stu_id = student.stu_id\n" +
+				"\t\tFROM score JOIN student on  = student.stu_id\n" +
 				"\t) AS R JOIN paper on R.paper_id = paper.paper_id";
 
 		try {

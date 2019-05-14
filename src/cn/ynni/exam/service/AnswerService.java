@@ -21,17 +21,24 @@ public class AnswerService {
         ArrayList<Question> questionArrayList = questionService.selectQuestion(answer.getPaperId());
 
         //比对答案
-        int i = 0; //用户游标  ArrayList 和 用户的答案长度一样长
-        String[] result = answer.getOption();
+        ArrayList<String> result = answer.getOption();
         Iterator it = questionArrayList.iterator();
+        Iterator it1 = result.iterator();
         while (it.hasNext()) {
             Question question = (Question) it.next();
+            String str = (String) it1.next();
             String[] rightAnswer = question.getAnswer().split(":");
-            String[] userAnswer = result[i].split(":");
+            String[] userAnswer = str.split(":");
+
+            for (int j = 0; j < rightAnswer.length; j++) {
+                System.out.print(rightAnswer[j]);
+            }
+
+            for (int j = 0; j < userAnswer.length; j++) {
+                System.out.print(userAnswer[j]);
+            }
 
             scores += (judge(userAnswer, rightAnswer) == true ? score : 0);
-
-            i++;
         }
 
         return scores;
@@ -47,10 +54,9 @@ public class AnswerService {
         if (answer.length != rightAnswer.length) return  false;
         else {
             for (int i = 0; i < answer.length; i++) {
-                if (answer[i] != rightAnswer[i]) return false;
+                if (!rightAnswer[i].equals(answer[i])) return false;
             }
         }
-
         return true;
     }
 }

@@ -19,7 +19,6 @@ public class SelectAllTestServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
 
@@ -27,8 +26,7 @@ public class SelectAllTestServlet extends HttpServlet {
         PaperService paperService = new PaperService();
         ArrayList<Paper> paperArrayList = paperService.selectPerpar();
 
-
         req.setAttribute("paperArrayList", paperArrayList);
-        req.getRequestDispatcher("/studentTest.jsp").forward(req, resp);
+        req.getRequestDispatcher("studentTest.jsp").forward(req, resp);
     }
 }

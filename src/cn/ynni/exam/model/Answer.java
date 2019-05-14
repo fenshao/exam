@@ -1,15 +1,17 @@
 package cn.ynni.exam.model;
 
+import java.util.ArrayList;
+
 public class Answer {
-    private String[] option; //选项 option[0]代表第1道题学生答案
+    private ArrayList<String> option; //选项 option[0]代表第1道题学生答案
     private String stdId; //学生Id
     private int paperId;
 
-    public String[] getOption() {
+    public ArrayList<String> getOption() {
         return option;
     }
 
-    public void setOption(String[] option) {
+    public void setOption(ArrayList<String> option) {
         this.option = option;
     }
 

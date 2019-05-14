@@ -52,10 +52,10 @@
         <div class="col-lg-2 bootstrap-admin-col-left">
             <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i>我的考试</a>
+                    <a href="SelectAllTestServlet"><i class="glyphicon glyphicon-chevron-right"></i>我的考试</a>
                 </li>
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i>查看成绩</a>
+                    <a href="lookScoreServlet"><i class="glyphicon glyphicon-chevron-right"></i>查看成绩</a>
                 </li>
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-chevron-right"></i>试卷查询</a>
@@ -76,8 +76,8 @@
                                     <label class="col-lg-4 control-label" >试题名称</label>
                                     <div class="col-lg-8">
                                         <select class="form-control" name="paperId">
-                                            <c:forEach items="${paperArrayList}" var="paper">
-                                                <option value="${paper.paperId}">${paper.title}</option>
+                                            <c:forEach items="${paperArrayList}" var="paper1">
+                                                <option value="${paper1.paperId}">${paper1.title}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -188,5 +188,11 @@
         </div><!-- /.modal -->
     </div>
 </form>
+
+<%
+    if ((String)request.getAttribute("str") == "true") {
+%>
+<script>alert("交卷成功！");</script>
+<%}%>
 </body>
 </html>
