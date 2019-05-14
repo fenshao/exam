@@ -103,6 +103,28 @@ public class StudentService {
     }
 
     /**
+     *修改密码
+     * @param stuId
+     * @param newPsw
+     * @return
+     */
+    public Boolean updatePassword(String stuId, String newPsw){
+        MysqlConnection mysqlConnection = MysqlConnection.getMysqlConnection();
+        Connection conn = mysqlConnection.getCon();
+        String sql = "update student set stu_password = ? where stu_id = ?;";
+        PreparedStatement stm = null;
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setString(1,newPsw);
+            stm.setString(2,stuId);
+            stm.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return true;
+    }
+    /**
      * fun: 通过stuId查询一个学生的所有信息
      * @param name
      * @return Student

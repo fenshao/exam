@@ -144,7 +144,7 @@
 
 <!--个人资料-->
 <!-- 模态框（Modal） -->
-<form  class="form-horizontal"  method="post" action="/book/AdminServlet">
+<form  class="form-horizontal"  method="post" action="index.jsp">
     <div class="modal fade" id="updateinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -199,7 +199,7 @@
 
 <!--修改密码-->
 <!-- 模态框（Modal） -->
-<form  class="form-horizontal"  method="post" action="/book/AdminServlet">
+<form  class="form-horizontal"  method="post" action="uPasswordServlet">
     <div class="modal fade" id="updatepwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

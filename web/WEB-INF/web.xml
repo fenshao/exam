@@ -94,6 +94,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>uPasswordServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.uPasswordServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>uPasswordServlet</servlet-name>
+        <url-pattern>/uPasswordServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AddStudentServlet</servlet-name>
         <servlet-class>cn.ynni.exam.controllar.AddStudentServlet</servlet-class>
     </servlet>
