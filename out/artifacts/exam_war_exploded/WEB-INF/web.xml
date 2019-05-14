@@ -93,4 +93,44 @@
         <url-pattern>/DeleteStudent</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>uPasswordServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.uPasswordServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>uPasswordServlet</servlet-name>
+        <url-pattern>/uPasswordServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddStudentServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.AddStudentServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddStudentServlet</servlet-name>
+        <url-pattern>/AddStudentServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SelectStudentServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.SelectStudentServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SelectStudentServlet</servlet-name>
+        <url-pattern>/SelectStudentServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminScoreServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.AdminScoreServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminScoreServlet</servlet-name>
+        <url-pattern>/AdminScoreServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>
