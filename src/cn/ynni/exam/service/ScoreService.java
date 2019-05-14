@@ -117,7 +117,7 @@ public class ScoreService {
 				"\t\t\t\tSELECT student.stu_id\n" +
 				"\t\t\t\t, student.stu_name\n" +
 				"\t\t\t\tFROM student \n" +
-				"\t\t\t\tWHERE student.stu_id = ? \n" +
+				"\t\t\t\tWHERE 1 = 1 \n" +
 				"\t\t) AS R JOIN score ON score.stu_id = R.stu_id\n" +
 				") AS R1 JOIN paper ON R1.paper_id = paper.paper_id";
 
@@ -128,6 +128,7 @@ public class ScoreService {
 			while (resultSet.next()) {
 				ScoreInfo info = new ScoreInfo();
 
+				System.out.println(resultSet.getString(1));
                 info.setStuName(resultSet.getString(1));
                 info.setPaperId(resultSet.getInt(2));
                 info.setTitle(resultSet.getString(3));

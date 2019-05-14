@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Server
@@ -78,10 +79,9 @@
                                 <th>成绩</th>
                             </tr>
                             </thead>
-                            <c:forEach items="${allStudent}" var="student">
+                            <c:forEach items="${infoArrayList}" var="student">
                                 <tbody>
                                 <tr>
-
                                     <td>${student.stuName}</td>
                                     <td>${student.paperId}</td>
                                     <td>${student.title}</td>
