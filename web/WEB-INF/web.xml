@@ -143,4 +143,15 @@
         <url-pattern>/uNameAndSexServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>selectPaperServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.selectPaperServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>selectPaperServlet</servlet-name>
+        <url-pattern>/selectPaperServlet</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

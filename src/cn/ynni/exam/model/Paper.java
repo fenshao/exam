@@ -1,6 +1,9 @@
 package cn.ynni.exam.model;
 
-public class Paper {
+import java.util.ArrayList;
+import java.util.stream.Stream;
+
+public class Paper extends ArrayList<Paper> {
     private int paperId;
     private String title;
 
@@ -18,5 +21,10 @@ public class Paper {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public Stream<Paper> stream() {
+        return null;
     }
 }

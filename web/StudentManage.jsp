@@ -110,28 +110,28 @@
                         <div class="panel-body">
                             <table id="data_list" class="table table-hover table-bordered"  cellspacing="0" width="100%">
                                 <thead>
-                                    <tr>
-                                        <th>账号</th>
-                                        <th>姓名</th>
-                                        <th>性别</th>
-                                        <th>操作</th>
-                                    </tr>
+                                <tr>
+                                    <th>账号</th>
+                                    <th>姓名</th>
+                                    <th>性别</th>
+                                    <th>操作</th>
+                                </tr>
                                 </thead>
                                 <c:forEach items="${allStudent}" var="student">
-                                <tbody>
+                                    <tbody>
                                     <tr>
 
-                                            <td>${student.stuId}</td>
-                                            <td>${student.stuName}</td>
-                                            <td>${student.stuSex}</td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#updateModal"
-                                                        id="btn_update" onclick="showInfo2('${student.stuId}','${student.stuName}','${student.stuSex}', '${student.stuPassword}')">修改</button>
-                                                <button type="button" class="btn btn-danger btn-xs" onclick="deletebook(${student.stuId})">删除</button>
-                                            </td>
+                                        <td>${student.stuId}</td>
+                                        <td>${student.stuName}</td>
+                                        <td>${student.stuSex}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#updateModal"
+                                                    id="btn_update" onclick="showInfo2('${student.stuId}','${student.stuName}','${student.stuSex}', '${student.stuPassword}')">修改</button>
+                                            <button type="button" class="btn btn-danger btn-xs" onclick="deletebook(${student.stuId})">删除</button>
+                                        </td>
 
                                     </tr>
-                                </tbody>
+                                    </tbody>
                                 </c:forEach>
                             </table>
                         </div>
@@ -361,11 +361,11 @@
     </div>
 </form>
 
-    <%
-        if ((String)request.getAttribute("str") == "true") {
-    %>
-        <script>alert("操作成功！");</script>
-    <%}%>
+<%
+    if ((String)request.getAttribute("str") == "true") {
+%>
+<script>alert("操作成功！");</script>
+<%}%>
 
 <script type="text/javascript">
     function showInfo2(userName, stuName, sex, password) {
@@ -374,7 +374,6 @@
         document.getElementById("sex").value = sex;
         document.getElementById("password").value = password;
     }
-
     function deletebook(userName) {
         con = confirm("是否删除?");
         if(con == true){

@@ -1,8 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Server
-  Date: 2019/5/13
-  Time: 12:34
+  Date: 2019/5/14
+  Time: 13:54
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -34,7 +35,7 @@
                                 <li role="presentation" class="divider"></li>
                                 <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
                                 <li role="presentation" class="divider"></li>
-                                <li><a href="/book/login.jsp">退出</a></li>
+                                <li><a href="">退出</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -57,40 +58,58 @@
                     <a href="lookScoreServlet"><i class="glyphicon glyphicon-chevron-right"></i>查看成绩</a>
                 </li>
                 <li>
-                    <a href="selectPaper.jsp"><i class="glyphicon glyphicon-chevron-right"></i>试卷查询</a>
+                    <a href="selectPaperServlet"><i class="glyphicon glyphicon-chevron-right"></i>试卷查询</a>
                 </li>
             </ul>
         </div>
         <!--右边面板-->
         <div class="col-lg-10">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">我的考试</div>
+                        <div class="panel-heading">
+                            <div class="text-muted bootstrap-admin-box-title">试卷查询</div>
+                        </div>
                         <div class="panel-body">
-                            <ul>
-                                <li>查看考试、进行考试</li>
-                            </ul>
+                            <form action="selectPaperServlet" method="post" class="form-horizontal">
+                                <input type="hidden" name="tid" value="1"/>
+                                <input type="hidden" name="show" value="1"/>
+                                <div class="col-lg-7 form-group">
+                                    <label class="col-lg-4 control-label">试卷编号</label>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" id="paperId" name="paperId" type="number">
+                                        <label class="control-label" for="name" style="display: none;"></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 form-group">
+                                    <button type="submit" class="btn btn-primary" id="btn_query">查询</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">查看成绩</div>
-                        <div class="panel-body">
-                            <ul>
-                                <li>查看成绩</li>
-                            </ul>
+                        <div class="panel-heading">
+                            <div class="text-muted bootstrap-admin-box-title">试卷信息</div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">试卷查询</div>
                         <div class="panel-body">
-                            <ul>
-                                <li>查询已有的试卷</li>
-                            </ul>
+                            <table id="data_list" class="table table-hover table-bordered"  cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    <th>试卷号</th>
+                                    <th>试卷名</th>
+                                </tr>
+                                </thead>
+                                <c:forEach items="${allPaper}" var="Paper">
+                                    <tbody>
+                                    <tr>
+                                        <td>${Paper.paperId}</td>
+                                        <td>${Paper.title}</td>
+                                    </tr>
+                                    </tbody>
+                                </c:forEach>
+                            </table>
                         </div>
                     </div>
                 </div>

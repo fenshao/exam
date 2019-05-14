@@ -44,6 +44,7 @@ public class PaperService {
         Connection conn = mysqlConnection.getCon();
 
         String sql = "select * from Paper;";
+
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         try{
@@ -55,7 +56,6 @@ public class PaperService {
                 pa.setPaperId(rs.getInt("paper_id"));
                 pa.setTitle(rs.getString("title"));
                 sArray.add(pa);
-
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -133,6 +133,7 @@ public class PaperService {
             while (resultSet.next()) {
                 paper.setPaperId(resultSet.getInt(1));
                 paper.setTitle(resultSet.getString(2));
+                System.out.println(resultSet.getString(2));
             }
         } catch (SQLException e) {
             e.printStackTrace();
