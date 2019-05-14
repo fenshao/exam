@@ -57,7 +57,7 @@
                     <a href="allUserInformationServlet"><i class="glyphicon glyphicon-chevron-right"></i>学生管理</a>
                 </li>
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i>试卷管理</a>
+                    <a href="selectPaper.jsp"><i class="glyphicon glyphicon-chevron-right"></i>试卷管理</a>
                 </li>
             </ul>
         </div>

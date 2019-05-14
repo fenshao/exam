@@ -163,5 +163,15 @@
         <url-pattern>/AnswerServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>uTeaNameSexServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.uTeaNameSexServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>uTeaNameSexServlet</servlet-name>
+        <url-pattern>/uTeaNameSexServlet</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

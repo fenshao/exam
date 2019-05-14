@@ -52,13 +52,13 @@
         <div class="col-lg-2 bootstrap-admin-col-left">
             <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
                 <li>
-                    <a href="SelectAllTestServlet"><i class="glyphicon glyphicon-chevron-right"></i>我的考试</a>
+                    <a href="AdminScoreServlet"><i class="glyphicon glyphicon-chevron-right"></i>查询成绩</a>
                 </li>
                 <li>
-                    <a href="lookScoreServlet"><i class="glyphicon glyphicon-chevron-right"></i>查看成绩</a>
+                    <a href="allUserInformationServlet"><i class="glyphicon glyphicon-chevron-right"></i>学生管理</a>
                 </li>
                 <li>
-                    <a href="selectPaper.jsp"><i class="glyphicon glyphicon-chevron-right"></i>试卷查询</a>
+                    <a href="selectPaper.jsp"><i class="glyphicon glyphicon-chevron-right"></i>试卷管理</a>
                 </li>
             </ul>
         </div>

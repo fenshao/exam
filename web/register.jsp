@@ -30,7 +30,7 @@
 			<input type="text" name="number" class="phone_number" placeholder="姓名" autocomplete="off" id="number"/>
 		</div>
 		<div>
-			<input type="text" name="sex" class="email" placeholder="性别" oncontextmenu="return false" onpaste="return false" />
+			<input type="text" name="sex" class="t" placeholder="性别" oncontextmenu="return false" onpaste="return false" />
 		</div>
 
 		<button id="submit" type="submit">注 册</button>
