@@ -53,4 +53,44 @@
         <url-pattern>/TestServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ShowQuestionServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.ShowQuestionServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ShowQuestionServlet</servlet-name>
+        <url-pattern>/ShowQuestionServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>allUserInformationServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.allUserInformationServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>allUserInformationServlet</servlet-name>
+        <url-pattern>/allUserInformationServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdataStudent</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.UpdataStudent</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdataStudent</servlet-name>
+        <url-pattern>/UpdataStudent</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteStudent</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.DeleteStudent</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteStudent</servlet-name>
+        <url-pattern>/DeleteStudent</url-pattern>
+    </servlet-mapping>
+
 </web-app>

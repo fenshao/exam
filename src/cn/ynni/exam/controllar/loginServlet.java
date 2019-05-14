@@ -29,9 +29,6 @@ public class loginServlet extends HttpServlet {
         String password = req.getParameter("password");
         String optionID = req.getParameter("option");
 
-        System.out.println(username + " " + password);
-
-
         if (optionID.equals("0")) { //学生
             //判断密码是否正确
             StudentService studentService = new StudentService();
@@ -56,8 +53,8 @@ public class loginServlet extends HttpServlet {
             if (teacher.getTeaId() != null) {
                 //设置session
                 req.getSession().setAttribute("username", username);
-                req.getSession().setMaxInactiveInterval(6000);
-                resp.sendRedirect("teachercontent.jsp");
+                req.getSession().setMaxInactiveInterval(600);
+                resp.sendRedirect("adminIndex.jsp");
             }
             else {
                 req.setAttribute("message", "用户名或密码错误");

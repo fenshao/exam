@@ -30,13 +30,6 @@
                                 <%=request.getSession().getAttribute("username")%>
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#updateinfo" data-toggle="modal">个人资料</a></li>
-                                <li role="presentation" class="divider"></li>
-                                <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
-                                <li role="presentation" class="divider"></li>
-                                <li><a href="/book/login.jsp">退出</a></li>
-                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -78,6 +71,10 @@
                                     <br />
                                     <br />
                                 </c:forEach>
+
+                                <div class="text-center form-group">
+                                    <button type="submit" class="btn btn-primary" id="btn_query">交卷离开</button>
+                                </div>
                             </form>
                         </div>
                     </div>

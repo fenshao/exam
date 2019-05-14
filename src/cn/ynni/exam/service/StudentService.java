@@ -53,20 +53,23 @@ public class StudentService {
      * @param stuId
      * @return void
      */
-    public void deleteStudent(String stuId) {
+    public boolean deleteStudent(String stuId) {
         // TODO Auto-generated method stub
         MysqlConnection mysqlConnection = MysqlConnection.getMysqlConnection();
         Connection conn = mysqlConnection.getCon();
         String sql = "delete from student where stu_id = ?";
         PreparedStatement stm = null;
+        int rs = 0;
         try {
             stm = conn.prepareStatement(sql);
             stm.setString(1,stuId);
-            stm.executeUpdate();
+            rs = stm.executeUpdate();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        return rs != 0;
     }
 
     /**
@@ -77,23 +80,26 @@ public class StudentService {
      * @param stuSex
      * @return void
      */
-    public void updateStudent(String stuId, String stuPassword, String stuName, String stuSex){
+    public boolean updateStudent(String stuId, String stuPassword, String stuName, String stuSex){
         MysqlConnection mysqlConnection = MysqlConnection.getMysqlConnection();
         Connection conn = mysqlConnection.getCon();
-        String sql = "updata student set stu_password = ?, stu_name = ?, stu_sex = ? where stu_id = ?";
+        String sql = "update student set stu_password = ?, stu_name = ?, stu_sex = ? where stu_id = ?";
         PreparedStatement stm = null;
+        int rs = 0;
 
         try {
             stm = conn.prepareStatement(sql);
-            stm.setString(4,stuId);
             stm.setString(1,stuPassword);
             stm.setString(2,stuName);
             stm.setString(3,stuSex);
-            stm.executeUpdate();
+            stm.setString(4,stuId);
+            rs = stm.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return rs != 0;
     }
 
     /**
@@ -135,7 +141,7 @@ public class StudentService {
         ArrayList<Student> students_Array = new ArrayList<Student>();
         MysqlConnection mysqlConnection = MysqlConnection.getMysqlConnection();
         Connection conn = mysqlConnection.getCon();
-        String sql = "select * from admin where status=1";
+        String sql = "select * from student";
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {

@@ -34,7 +34,7 @@ public class TeacherService {
 		ResultSet rs = null;
 
 		try {
-			pst = conn.prepareStatement("SELECT * FROM student WHERE stu_id = ? AND stu_password = ?");
+			pst = conn.prepareStatement("SELECT * FROM teacher WHERE tea_id = ? AND tea_password = ?");
 			pst.setString(1, username);
 			pst.setString(2, password);
 			rs = pst.executeQuery();

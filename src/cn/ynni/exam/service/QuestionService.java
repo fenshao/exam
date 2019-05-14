@@ -193,4 +193,46 @@ public class QuestionService {
 
         return question;
     }
+
+    /********************************************
+     * author: wangziquan
+     * @param: 表名
+     * 获取分页信息
+     ********************************************/
+    public ArrayList<Question> findPageBean(int start, int currentCount, String table) {
+        ArrayList<Question> arrayList = new ArrayList();
+        Connection conn = MysqlConnection.getMysqlConnection().getCon();
+        PreparedStatement stm = null;
+        ResultSet resultSet = null;
+
+        try {
+            stm = conn.prepareStatement("SELECT * FROM " + table + " limit ?, ?");
+
+            stm.setInt(1, start);
+            stm.setInt(2, currentCount);
+
+            resultSet = stm.executeQuery();
+
+            while (resultSet.next()) {
+                Question question = new Question();
+
+                question.setQuestionId(resultSet.getInt(1));
+                question.setTitle(resultSet.getString(2));
+                question.setPaperId(resultSet.getInt(3));
+                question.setOptionA(resultSet.getString(4));
+                question.setOptionB(resultSet.getString(5));
+                question.setOptionC(resultSet.getString(6));
+                question.setOptionD(resultSet.getString(7));
+                question.setAnswer(resultSet.getString(8));
+
+                arrayList.add(question);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return arrayList;
+    }
 }

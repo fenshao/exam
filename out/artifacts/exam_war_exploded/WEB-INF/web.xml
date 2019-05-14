@@ -22,4 +22,75 @@
         <servlet-name>registerServlet</servlet-name>
         <url-pattern>/registerServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>lookScoreServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.lookScoreServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>lookScoreServlet</servlet-name>
+        <url-pattern>/lookScoreServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SelectAllTestServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.SelectAllTestServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>SelectAllTestServlet</servlet-name>
+        <url-pattern>/SelectAllTestServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TestServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.TestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/TestServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShowQuestionServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.ShowQuestionServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ShowQuestionServlet</servlet-name>
+        <url-pattern>/ShowQuestionServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>allUserInformationServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.allUserInformationServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>allUserInformationServlet</servlet-name>
+        <url-pattern>/allUserInformationServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdataStudent</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.UpdataStudent</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdataStudent</servlet-name>
+        <url-pattern>/UpdataStudent</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteStudent</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.DeleteStudent</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteStudent</servlet-name>
+        <url-pattern>/DeleteStudent</url-pattern>
+    </servlet-mapping>
+
 </web-app>
