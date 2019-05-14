@@ -128,10 +128,10 @@ public class ScoreService {
 			while (resultSet.next()) {
 				ScoreInfo info = new ScoreInfo();
 
-				info.setPaperId(resultSet.getInt(1));
-				info.setTitle(resultSet.getString(2));
-				info.setStuName(resultSet.getString(3));
-				info.setScore(resultSet.getInt(4));
+                info.setStuName(resultSet.getString(1));
+                info.setPaperId(resultSet.getInt(2));
+                info.setTitle(resultSet.getString(3));
+                info.setScore(resultSet.getInt(4));
 
 				arrayList.add(info);
 			}
