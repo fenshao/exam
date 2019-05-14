@@ -101,7 +101,7 @@
 
 <!--个人资料-->
 <!-- 模态框（Modal） -->
-<form  class="form-horizontal"  method="post" action="uNameAndSexServlet">
+<form  class="form-horizontal"  method="post" action="uTeaNameSexServlet">
     <div class="modal fade" id="updateinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -119,20 +119,12 @@
                     <input type="hidden" name="tip" value="2" />
                     <input type="hidden" name="url" value="index" />
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">真实姓名</label>
+                        <label for="" class="col-sm-3 control-label">姓名</label>
                         <div class="col-lg-7">
                             <input type="text" class="form-control" id="name" name="name" placeholder="请输入您的真实姓名" value="" />
                             <label class="control-label" for="name" style="display: none;"></label>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">性别</label>
-                        <div class="col-lg-7">
-                            <input type="text" class="form-control" id="sex" name="sex" placeholder="请输入您的性别" value="" />
-                            <label class="control-label" for="sex" style="display: none;"></label>
-                        </div>
-                    </div>
-
                 </div>
 
                 <div class="modal-footer">
@@ -149,7 +141,7 @@
 
 <!--修改密码-->
 <!-- 模态框（Modal） -->
-<form  class="form-horizontal"  method="post" action="uPasswordServlet">
+<form  class="form-horizontal"  method="post" action="uTeaPassServlet">
     <div class="modal fade" id="updatepwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

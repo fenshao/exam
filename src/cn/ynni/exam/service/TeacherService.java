@@ -145,7 +145,54 @@ public class TeacherService {
 		}
 		return false;
 	}
-	
+
+	/**
+	 * 修改密码
+	 * @param teaId
+	 * @param newPsw
+	 * @return
+	 */
+	public Boolean updatePassword(String teaId, String newPsw){
+		MysqlConnection mysqlConnection = MysqlConnection.getMysqlConnection();
+		Connection conn = mysqlConnection.getCon();
+		String sql = "update teacher set tea_password = ? where tea_id = ?;";
+		PreparedStatement stm = null;
+
+		try {
+			stm = conn.prepareStatement(sql);
+			stm.setString(1,newPsw);
+			stm.setString(2,teaId);
+			stm.executeUpdate();
+		}catch (SQLException e){
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	/**
+	 * 更新名字
+	 * @param stuId
+	 * @param stuName
+	 * @return
+	 */
+	public Boolean  updateNameAndSex(String stuId,String stuName){
+		MysqlConnection mysqlConnection = MysqlConnection.getMysqlConnection();
+		Connection conn = mysqlConnection.getCon();
+
+		String sql = "update teacher set tea_name = ? where tea_id = ?;";
+		PreparedStatement stm = null;
+
+		try {
+			stm = conn.prepareStatement(sql);
+			stm.setString(1,stuName);
+			stm.setString(2,stuId);
+			stm.executeUpdate();
+		}catch (SQLException e){
+			e.printStackTrace();
+		}
+		return true;
+	}
+
 	public ResultSet selectTeacher(String teaId) {
 		Connection conn = MysqlConnection.getMysqlConnection().getCon();
 		String sql = "select * teacher where tea_id = ?";

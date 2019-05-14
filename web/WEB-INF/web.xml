@@ -144,14 +144,32 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>selectPaperServlet</servlet-name>
-        <servlet-class>cn.ynni.exam.controllar.selectPaperServlet</servlet-class>
-    </servlet>
+    <servlet-name>selectPaperServlet</servlet-name>
+    <servlet-class>cn.ynni.exam.controllar.selectPaperServlet</servlet-class>
+</servlet>
 
     <servlet-mapping>
         <servlet-name>selectPaperServlet</servlet-name>
         <url-pattern>/selectPaperServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+    <servlet-name>uTeaPassServlet</servlet-name>
+    <servlet-class>cn.ynni.exam.controllar.uTeaPassServlet</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>uTeaPassServlet</servlet-name>
+        <url-pattern>/uTeaPassServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>uTeaNameSexServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.uTeaNameSexServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>uTeaNameSexServlet</servlet-name>
+        <url-pattern>/uTeaNameSexServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
