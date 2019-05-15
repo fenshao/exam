@@ -2,8 +2,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Server
-  Date: 2019/5/13
-  Time: 13:17
+  Date: 2019/5/14
+  Time: 13:54
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -67,25 +67,49 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">我的考试</div>
+                        <div class="panel-heading">
+                            <div class="text-muted bootstrap-admin-box-title">试卷查询</div>
+                        </div>
                         <div class="panel-body">
-                            <form action="TestServlet" method="post" class="form-horizontal">
+                            <form action="studentSelectPaperServlet" method="post" class="form-horizontal">
                                 <input type="hidden" name="tid" value="1"/>
-                                <input type="hidden" name="show" value="2"/>
+                                <input type="hidden" name="show" value="1"/>
                                 <div class="col-lg-7 form-group">
-                                    <label class="col-lg-4 control-label" >试题名称</label>
+                                    <label class="col-lg-4 control-label">试卷编号</label>
                                     <div class="col-lg-8">
-                                        <select class="form-control" name="paperId">
-                                            <c:forEach items="${paperArrayList}" var="paper1">
-                                                <option value="${paper1.paperId}">${paper1.title}</option>
-                                            </c:forEach>
-                                        </select>
+                                        <input class="form-control" id="paperId" name="paperId" type="number">
+                                        <label class="control-label" for="name" style="display: none;"></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 form-group">
-                                    <button type="submit" class="btn btn-primary" id="btn_query">开始考试</button>
+                                    <button type="submit" class="btn btn-primary" id="btn_query">查询</button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="text-muted bootstrap-admin-box-title">试卷信息</div>
+                        </div>
+                        <div class="panel-body">
+                            <table id="data_list" class="table table-hover table-bordered"  cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    <th>试卷号</th>
+                                    <th>试卷名</th>
+                                </tr>
+                                </thead>
+                                <c:forEach items="${allPaper}" var="Paper">
+                                    <tbody>
+                                    <tr>
+                                        <td>${Paper.paperId}</td>
+                                        <td>${Paper.title}</td>
+                                    </tr>
+                                    </tbody>
+                                </c:forEach>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -93,7 +117,6 @@
         </div>
     </div>
 </div>
-
 <!--个人资料-->
 <!-- 模态框（Modal） -->
 <form  class="form-horizontal"  method="post" action="uNameAndSexServlet">
@@ -188,11 +211,5 @@
         </div><!-- /.modal -->
     </div>
 </form>
-
-<%
-    if ((String)request.getAttribute("str") == "true") {
-%>
-<script>alert("交卷成功！");</script>
-<%}%>
 </body>
 </html>

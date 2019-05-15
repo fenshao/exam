@@ -57,7 +57,7 @@
                     <a href="lookScoreServlet"><i class="glyphicon glyphicon-chevron-right"></i>查看成绩</a>
                 </li>
                 <li>
-                    <a href="selectPaper.jsp"><i class="glyphicon glyphicon-chevron-right"></i>试卷查询</a>
+                    <a href="StudentSelectPaper.jsp"><i class="glyphicon glyphicon-chevron-right"></i>试卷查询</a>
                 </li>
             </ul>
         </div>
