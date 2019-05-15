@@ -60,7 +60,7 @@
                             <form action="AnswerServlet" method="post" class="form-horizontal">
                                 <c:forEach items="${questionArrayList}" var="choice" >
 
-                                    <span> ${choice.questionId}、 ${choice.title}</span>
+                                    <span> ${choice.index}、 ${choice.title}</span>
                                     <br />
                                     <br />
                                     <lable>

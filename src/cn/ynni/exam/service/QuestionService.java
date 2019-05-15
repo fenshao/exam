@@ -53,6 +53,49 @@ public class QuestionService {
         return (rs != 0);
     }
 
+    /**
+     * 插入一千条
+     *
+     * author：lilei
+     */
+
+    public boolean insertmoreQuestion( ArrayList<Question> arrayList, int paperId) {
+        MysqlConnection mysqlConnection = MysqlConnection.getMysqlConnection();
+        Connection conn = mysqlConnection.getCon();
+        PreparedStatement stm = null;
+        int rs = 0;
+
+        try {
+            stm = conn.prepareStatement("INSERT INTO question(title, paper_id, option_a, option_b," +
+                    " option_c, option_d, answer) VALUES(?, ?, ?, ?, ?, ?, ?) ");
+
+
+            for (int i = 0; i < arrayList.size(); i++) {
+                Question question = arrayList.get(i);
+                stm.setString(1, question.getTitle());
+                stm.setInt(2, paperId);
+                stm.setString(3, question.getOptionA());
+                stm.setString(4, question.getOptionB());
+                stm.setString(5,question.getOptionC());
+                stm.setString(6, question.getOptionD());
+                stm.setString(7, question.getAnswer());
+                stm.addBatch();
+            }
+            stm.executeBatch();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+
+        }
+
+        return (rs != 0);
+    }
+
+
+
+
+
     /********************************************
      * author: wangziquan
      * @param: title

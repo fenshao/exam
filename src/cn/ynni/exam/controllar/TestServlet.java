@@ -29,6 +29,10 @@ public class TestServlet extends HttpServlet {
         QuestionService questionService = new QuestionService();
         ArrayList<Question> questionArrayList = questionService.selectQuestion(Integer.parseInt(paperId));
 
+        for (int i = 0; i < questionArrayList.size(); i++) {
+            questionArrayList.get(i).setIndex(i + 1);
+        }
+
         //查看试题名称
         PaperService paperService = new PaperService();
         Paper paper = paperService.oneselectInfo(paperId);
