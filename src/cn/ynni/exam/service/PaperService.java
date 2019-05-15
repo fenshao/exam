@@ -17,17 +17,15 @@ public class PaperService {
     public boolean addPaper(int id,String title){
         MysqlConnection mysqlConnection = MysqlConnection.getMysqlConnection();
         Connection conn = mysqlConnection.getCon();
-
         PreparedStatement pstmt = null;
-        String sql = "insert into parper values(?,?);";
+        String sql = "insert into paper(paper_id, title) values(?, ?)";
 
         try{
             pstmt = conn.prepareStatement(sql);
-
             //增加id和title
             pstmt.setInt(1,id);
             pstmt.setString(2,title);
-            pstmt.executeUpdate(sql);//执行update
+           int rs = pstmt.executeUpdate();//执行update
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -43,7 +41,7 @@ public class PaperService {
         MysqlConnection mysqlConnection = MysqlConnection.getMysqlConnection();
         Connection conn = mysqlConnection.getCon();
 
-        String sql = "select * from Paper;";
+        String sql = "select * from paper;";
 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -140,7 +138,25 @@ public class PaperService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return paper;
+    }
+
+    public int getMaxpaperId() {
+        Connection conn = MysqlConnection.getMysqlConnection().getCon();
+        PreparedStatement stm = null;
+        ResultSet resultSet = null;
+
+        try {
+            stm = conn.prepareStatement("SELECT MAX(paper_id) FROM paper");
+            resultSet = stm.executeQuery();
+
+            while (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return  0;
     }
 }

@@ -1,12 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Server
-  Date: 2019/5/14
-  Time: 13:54
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="java.io.File"%>
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -62,9 +57,27 @@
                 </li>
             </ul>
         </div>
+
         <!--右边面板-->
         <div class="col-lg-10">
             <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="text-muted bootstrap-admin-box-title">作业名称</div>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="col-lg-3">
+                                <p>上传格式*.xlsx 或*.xls 目录如下</p>
+                                <img src="images/style.png" />
+                            </div>
+                            <div class="col-lg-3 col-lg-offset-6 form-group">
+                                <button type="button" class="btn btn-primary" id="btn_add" href="#updateinfo" data-toggle="modal">上传文件</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -88,6 +101,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -117,7 +131,53 @@
         </div>
     </div>
 </div>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class=" navbar-collapse nav-divider">
+                    <a class="navbar-brand" href="#"><strong>试题上传</strong></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
 
+<!--文件上传-->
+<!-- 模态框（Modal） -->
+<form  class="form-horizontal"  method="post" action="fileUpLoadServlet" ENCTYPE="multipart/form-data">
+    <div class="modal fade" id="updateinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        文件上传
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <!--正文-->
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">文件名称</label>
+                        <div class="col-lg-7">
+                            <input  class="custom-file-input" type="file"  id="name" name="path" />
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">
+                            上传
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+</form>
+</body>
 <!--个人资料-->
 <!-- 模态框（Modal） -->
 <form  class="form-horizontal"  method="post" action="uNameAndSexServlet">
@@ -212,5 +272,11 @@
         </div><!-- /.modal -->
     </div>
 </form>
+
+<%
+    if ((String)request.getAttribute("str") == "true") {
+%>
+<script>alert("上传成功！");</script>
+<%}%>
 </body>
 </html>

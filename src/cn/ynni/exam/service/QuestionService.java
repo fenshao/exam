@@ -37,9 +37,10 @@ public class QuestionService {
             stm.setString(1, title);
             stm.setInt(2, paperId);
             stm.setString(3, optionA);
-            stm.setString(4,optionC);
-            stm.setString(5, optionD);
-            stm.setString(6, answer);
+            stm.setString(4, optionB);
+            stm.setString(5,optionC);
+            stm.setString(6, optionD);
+            stm.setString(7, answer);
 
             rs = stm.executeUpdate();
 

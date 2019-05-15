@@ -183,5 +183,23 @@
         <url-pattern>/studentSelectPaperServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>UploadExcelServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.UploadExcelServlet</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>UploadExcelServlet</servlet-name>
+        <url-pattern>/UploadExcelServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>fileUpLoadServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.fileUpLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>fileUpLoadServlet</servlet-name>
+        <url-pattern>/fileUpLoadServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

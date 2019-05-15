@@ -1,6 +1,4 @@
 package cn.ynni.exam.controllar;
-
-import cn.ynni.exam.service.StudentService;
 import cn.ynni.exam.service.TeacherService;
 
 import javax.servlet.ServletException;
