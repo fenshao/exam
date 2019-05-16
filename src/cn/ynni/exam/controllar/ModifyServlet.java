@@ -27,13 +27,11 @@ public class ModifyServlet extends HttpServlet {
 
         //查询试题信息
         QuestionService questionService = new QuestionService();
-        ArrayList<Question> questionArrayList = questionService.selectQuestion(4);
 
         PaperService paperService = new PaperService();
         ArrayList<Paper> paperArrayList = paperService.selectPerpar();
 
         req.setAttribute("paperArrayList", paperArrayList);
-        req.setAttribute("questionArrayList", questionArrayList);
 
         req.getRequestDispatcher("ModifyTest.jsp").forward(req, resp);
     }

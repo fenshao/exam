@@ -106,12 +106,18 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">添加试题</div>
+                            <div class="text-muted bootstrap-admin-box-title">修改考试时间、分数</div>
                         </div>
                         <div class="panel-body">
                             <form action="allUserInformationServlet" method="post" class="form-horizontal">
                                 <div class="col-lg-3 form-group">
-                                    <button type="button" class="btn btn-primary" id="btn_add" data-toggle="modal" data-target="#addModal">添加学生</button>
+                                    <button type="button" class="btn btn-primary" id="btn_add" data-toggle="modal" data-target="#addModal">修改时间</button>
+                                </div>
+                            </form>
+
+                            <form action="allUserInformationServlet" method="post" class="form-horizontal">
+                                <div class="col-lg-3 text-right form-group">
+                                    <button type="button" class="btn btn-primary" id="btn_add1" data-toggle="modal" data-target="#updateModal1">修改分数</button>
                                 </div>
                             </form>
                         </div>
@@ -249,9 +255,9 @@
     </div>
 </form>
 
-<!--添加学生-->
+<!--修改考试时间-->
 <!-- 模态框（Modal） -->
-<form  class="form-horizontal"  method="post" action="AddStudentServlet">
+<form  class="form-horizontal"  method="post" action="TimeServlet">
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -260,7 +266,7 @@
                         &times;
                     </button>
                     <h4 class="modal-title" id="myModalLabel">
-                        添加新学生
+                        修改考试时间
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -269,47 +275,66 @@
                     <input type="hidden" name="tip" value="2" />
                     <input type="hidden" name="url" value="index" />
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">学号</label>
+                        <label for="" class="col-sm-3 control-label">时间(以秒为单位)</label>
                         <div class="col-lg-7">
-                            <input type="text" class="form-control" name="username" id="addusername" required="required"  placeholder="请输入学号">
+                            <input type="text" class="form-control" name="time" id="addusername" required="required"  placeholder="请输入时间">
                             <label class="control-label" for="username" style="display: none;"></label>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">姓名</label>
-                        <div class="col-lg-7">
-                            <input type="text" class="form-control" name="names" id="addnames" required="required"  placeholder="请输入姓名">
-                            <label class="control-label" for="names" style="display: none;"></label>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">密码</label>
-                        <div class="col-lg-7">
-                            <input type="password" class="form-control" name="password" id="addpassword" required="required"   placeholder="请输入密码">
-                            <label class="control-label" for="password" style="display: none;"></label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">性别</label>
-                        <div class="col-lg-7">
-                            <input type="text" class="form-control" name="sex" id="addsex" required="required"  placeholder="性别">
-                            <label class="control-label" for="sex" style="display: none;"></label>
-                        </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            修改
+                        </button>
                     </div>
                 </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                    </button>
-                    <button type="submit" class="btn btn-primary">
-                        添加
-                    </button>
-                </div>
-            </div><!-- /.modal-content -->
+            </div>
         </div><!-- /.modal -->
     </div>
 </form>
+
+<!--修改考试分数-->
+<!-- 模态框（Modal） -->
+<form  class="form-horizontal"  method="post" action="UpdateTestServlet">
+    <div class="modal fade" id="updateModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel1">
+                        修改每题得分
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <!--正文-->
+                    <input type="hidden" name="tip" value="2" />
+                    <input type="hidden" name="url" value="index" />
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">每题得分</label>
+                        <div class="col-lg-7">
+                            <input type="text" class="form-control" name="score" id="addusername1" required="required"  placeholder="请输入得分">
+                            <label class="control-label" for="username" style="display: none;"></label>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            修改
+                        </button>
+                    </div>
+                </div>
+            </div><!-- /.modal -->
+        </div>
+</form>
+
+
 
 <!--修改试题信息-->
 <!-- 模态框（Modal） -->

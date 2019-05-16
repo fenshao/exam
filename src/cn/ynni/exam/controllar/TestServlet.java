@@ -4,13 +4,13 @@ import cn.ynni.exam.model.Paper;
 import cn.ynni.exam.model.Question;
 import cn.ynni.exam.service.PaperService;
 import cn.ynni.exam.service.QuestionService;
+import cn.ynni.exam.service.TimerService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class TestServlet extends HttpServlet {
@@ -42,7 +42,9 @@ public class TestServlet extends HttpServlet {
         req.getSession().setAttribute("paperId", paperId);
         req.getSession().setMaxInactiveInterval(6000);
 
-        req.setAttribute("time", "1800");
+        TimerService timerService = new TimerService();
+
+        req.setAttribute("time", timerService.selectTime().getTime());
         req.setAttribute("questionArrayList", questionArrayList);
 
         req.getRequestDispatcher("/TestPaper.jsp").forward(req, resp);

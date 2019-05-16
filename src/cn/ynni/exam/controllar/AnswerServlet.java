@@ -1,12 +1,10 @@
 package cn.ynni.exam.controllar;
 
 import cn.ynni.exam.model.Answer;
+import cn.ynni.exam.model.Grade;
 import cn.ynni.exam.model.Paper;
 import cn.ynni.exam.model.Question;
-import cn.ynni.exam.service.AnswerService;
-import cn.ynni.exam.service.PaperService;
-import cn.ynni.exam.service.QuestionService;
-import cn.ynni.exam.service.ScoreService;
+import cn.ynni.exam.service.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -43,10 +41,13 @@ public class AnswerServlet extends HttpServlet {
         answer.setPaperId(Integer.parseInt(paperId));
         answer.setStdId((String) req.getSession().getAttribute("username"));
         AnswerService answerService = new AnswerService();
-        int scores = answerService.judgeScore(answer, score);
+        GradeService gradeService = new GradeService();
+        Grade grade = gradeService.selectGrade();
+        int scores = answerService.judgeScore(answer, grade.getScore());
 
         //插入成绩表
         ScoreService scoreService = new ScoreService();
+
         boolean flag = scoreService.insertScore((String) req.getSession().getAttribute("username"), Integer.parseInt(paperId), scores);
 
         //查看所有考试

@@ -283,4 +283,14 @@
         <url-pattern>/StudentSelect</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>UpdateTestServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.UpdateTestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateTestServlet</servlet-name>
+        <url-pattern>/UpdateTestServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>
