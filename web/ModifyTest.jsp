@@ -1,3 +1,11 @@
+<%@ page import="cn.ynni.exam.model.Question" %>
+<%@ page import="java.util.ArrayList" %><%--
+  Created by IntelliJ IDEA.
+  User: Server
+  Date: 2019/5/16
+  Time: 7:15
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -71,16 +79,20 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">学生查询</div>
+                            <div class="text-muted bootstrap-admin-box-title">试题查询</div>
                         </div>
                         <div class="panel-body">
-                            <form action="SelectStudentServlet" method="post" class="form-horizontal">
+                            <form action="SelectQuestionServlet" method="post" class="form-horizontal">
                                 <input type="hidden" name="tid" value="1"/>
                                 <input type="hidden" name="show" value="1"/>
                                 <div class="col-lg-7 form-group">
-                                    <label class="col-lg-4 control-label">学生姓名</label>
+                                    <label class="col-lg-4 control-label">试题名称</label>
                                     <div class="col-lg-8">
-                                        <input class="form-control" id="bookName" name="name" type="text" value="">
+                                        <select class="form-control" name="paperId">
+                                            <c:forEach items="${paperArrayList}" var="paper1">
+                                                <option value="${paper1.paperId}">${paper1.title}</option>
+                                            </c:forEach>
+                                        </select>
                                         <label class="control-label" for="name" style="display: none;"></label>
                                     </div>
                                 </div>
@@ -94,7 +106,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">添加学生</div>
+                            <div class="text-muted bootstrap-admin-box-title">添加试题</div>
                         </div>
                         <div class="panel-body">
                             <form action="allUserInformationServlet" method="post" class="form-horizontal">
@@ -108,34 +120,39 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">学生信息</div>
+                            <div class="text-muted bootstrap-admin-box-title">试题信息</div>
                         </div>
                         <div class="panel-body">
                             <table id="data_list" class="table table-hover table-bordered"  cellspacing="0" width="100%">
                                 <thead>
                                 <tr>
-                                    <th>账号</th>
-                                    <th>姓名</th>
-                                    <th>性别</th>
+                                    <th>标题</th>
+                                    <th>答案</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
-                                <c:forEach items="${allStudent}" var="student">
+                                    <%
+                                        ArrayList<Question> arrayList = (ArrayList<Question>) request.getAttribute("questionArrayList");
+
+                                        if (arrayList == null)  arrayList = new ArrayList<Question>();
+
+                                        for (int i = 0; i < arrayList.size(); i++) {
+                                            Question question = (Question) arrayList.get(i);
+                                    %>
                                     <tbody>
                                     <tr>
 
-                                        <td>${student.stuId}</td>
-                                        <td>${student.stuName}</td>
-                                        <td>${student.stuSex}</td>
+                                        <td><%=question.getTitle()%></td>
+                                        <td><%=question.getAnswer()%></td>
                                         <td>
                                             <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#updateModal"
-                                                    id="btn_update" onclick="showInfo2('${student.stuId}','${student.stuName}','${student.stuSex}', '${student.stuPassword}')">修改</button>
-                                            <button type="button" class="btn btn-danger btn-xs" onclick="deletebook(${student.stuId})">删除</button>
+                                                    id="btn_update" onclick="showInfo2('<%=question.getTitle()%>', '<%=question.getQuestionId()%>', '<%=question.getOptionA()%>','<%=question.getOptionB()%>', '<%=question.getOptionC()%>',
+                                                    '<%=question.getOptionD()%>', '<%=question.getAnswer()%>')">修改</button>
+                                            <button type="button" class="btn btn-danger btn-xs" onclick="deletebook(<%=question.getQuestionId()%>)">删除</button>
                                         </td>
-
                                     </tr>
                                     </tbody>
-                                </c:forEach>
+                                <%}%>
                             </table>
                         </div>
                     </div>
@@ -294,9 +311,9 @@
     </div>
 </form>
 
-<!--修改学生信息-->
+<!--修改试题信息-->
 <!-- 模态框（Modal） -->
-<form  class="form-horizontal"  method="post" action="UpdataStudent">
+<form  class="form-horizontal"  method="post" action="UpdataQuestion">
     <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -314,32 +331,50 @@
                     <input type="hidden" name="tip" value="2" />
                     <input type="hidden" name="url" value="index" />
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">学号</label>
+                        <label for="" class="col-sm-3 control-label">标题</label>
                         <div class="col-lg-7">
-                            <input type="text" class="form-control" name="username" id="username" required="required"  placeholder="请输入学号">
-                            <label class="control-label" for="username" style="display: none;"></label>
+                            <input type="text" class="form-control" name="title" id="title" required="required"  placeholder="请输入标题">
+                            <label class="control-label" for="title" style="display: none;"></label>
                         </div>
                     </div>
+                    <input type="hidden" class="form-control" name="paperId" id="paperId" hidden="hidden" />
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">姓名</label>
+                        <label for="" class="col-sm-3 control-label">选项A</label>
                         <div class="col-lg-7">
-                            <input type="text" class="form-control" name="names" id="names" required="required"  placeholder="请输入姓名">
-                            <label class="control-label" for="names" style="display: none;"></label>
+                            <input type="text" class="form-control" name="optionA" id="optionA" required="required"  placeholder="请输入A">
+                            <label class="control-label" for="optionA" style="display: none;"></label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">密码</label>
+                        <label for="" class="col-sm-3 control-label">选项B</label>
                         <div class="col-lg-7">
-                            <input type="password" class="form-control" name="password" id="password" required="required"   placeholder="请输入密码">
-                            <label class="control-label" for="password" style="display: none;"></label>
+                            <input type="text" class="form-control" name="optionB" id="optionB" required="required"  placeholder="请输入B">
+                            <label class="control-label" for="optionB" style="display: none;"></label>
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">性别</label>
+                        <label for="" class="col-sm-3 control-label">选项C</label>
                         <div class="col-lg-7">
-                            <input type="text" class="form-control" name="sex" id="sex" required="required"  placeholder="性别">
-                            <label class="control-label" for="sex" style="display: none;"></label>
+                            <input type="text" class="form-control" name="optionC" id="optionC" required="required"  placeholder="请输入C">
+                            <label class="control-label" for="optionA" style="display: none;"></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">选项D</label>
+                        <div class="col-lg-7">
+                            <input type="text" class="form-control" name="optionD" id="optionD" required="required"  placeholder="请输D">
+                            <label class="control-label" for="optionD" style="display: none;"></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">答案</label>
+                        <div class="col-lg-7">
+                            <input type="text" class="form-control" name="answer" id="answer" required="required"   placeholder="格式: 单个答案:A, 多个答案：A:B">
+                            <label class="control-label" for="answer" style="display: none;"></label>
                         </div>
                     </div>
                 </div>
@@ -363,16 +398,19 @@
 <%}%>
 
 <script type="text/javascript">
-    function showInfo2(userName, stuName, sex, password) {
-        document.getElementById("username").value = userName;
-        document.getElementById("names").value = stuName;
-        document.getElementById("sex").value = sex;
-        document.getElementById("password").value = password;
+    function showInfo2(title, paperId, optionA, optionB, optionC, optionD, answer) {
+        document.getElementById("title").value = title;
+        document.getElementById("paperId").value = paperId;
+        document.getElementById("optionA").value = optionA;
+        document.getElementById("optionB").value = optionB;
+        document.getElementById("optionC").value = optionC;
+        document.getElementById("optionD").value = optionD;
+        document.getElementById("answer").value = answer;
     }
-    function deletebook(userName) {
+    function deletebook(qid) {
         con = confirm("是否删除?");
         if(con == true){
-            location.href = "/exam/DeleteStudent?userName="+userName;
+            location.href = "/exam/DeleteQuestion?qid="+qid;
         }
     }
 </script>

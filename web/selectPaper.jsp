@@ -30,7 +30,7 @@
                                 <li role="presentation" class="divider"></li>
                                 <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
                                 <li role="presentation" class="divider"></li>
-                                <li><a href="index.jsp">退出</a></li>
+                                <li><a href="LoginOutServlet">退出</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -53,7 +53,10 @@
                     <a href="allUserInformationServlet"><i class="glyphicon glyphicon-chevron-right"></i>学生管理</a>
                 </li>
                 <li>
-                    <a href="selectPaper.jsp"><i class="glyphicon glyphicon-chevron-right"></i>试卷管理</a>
+                    <a href="SelectServlet"><i class="glyphicon glyphicon-chevron-right"></i>试卷管理</a>
+                </li>
+                <li>
+                    <a href="ModifyServlet"><i class="glyphicon glyphicon-chevron-right"></i>试题修改</a>
                 </li>
             </ul>
         </div>
@@ -162,20 +165,20 @@
                     <!--正文-->
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">文件名称</label>
-                        <div class="col-lg-7">
+                        <div class="col-lg-7 custom-file">
                             <input  class="custom-file-input" type="file"  id="name" name="path" />
                         </div>
                     </div>
-
-
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">
-                            上传
-                        </button>
-                    </div>
                 </div><!-- /.modal-content -->
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">
+                        上传
+                    </button>
+                </div>
             </div><!-- /.modal -->
         </div>
+    </div>
 </form>
 </body>
 <!--个人资料-->

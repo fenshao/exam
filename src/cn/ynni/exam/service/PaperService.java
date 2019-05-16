@@ -58,7 +58,11 @@ public class PaperService {
         }catch (SQLException e){
             e.printStackTrace();
         }finally{
-            mysqlConnection.closeResuletSet(rs);
+            try {
+                MysqlConnection.CloseConn(rs, pstmt, conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return sArray;
     }
@@ -82,6 +86,12 @@ public class PaperService {
             pstmt.executeUpdate(sql);//执行delete
         }catch (SQLException e){
             e.printStackTrace();
+        } finally {
+            try {
+                MysqlConnection.CloseConn(pstmt, conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return true;
@@ -108,7 +118,14 @@ public class PaperService {
 
         }catch (SQLException e){
             e.printStackTrace();
+        } finally {
+            try {
+                MysqlConnection.CloseConn(pstmt, conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
         return true;
     }
 
@@ -137,6 +154,12 @@ public class PaperService {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                MysqlConnection.CloseConn(conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return paper;
     }
@@ -155,6 +178,12 @@ public class PaperService {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                MysqlConnection.CloseConn(conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return  0;

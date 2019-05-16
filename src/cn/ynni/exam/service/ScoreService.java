@@ -35,16 +35,10 @@ public class ScoreService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			//关闭连接
-			if (ps != null) {
-				try {
-					ps.close();
-					if (conn != null) {
-						conn.close();
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+			try {
+				MysqlConnection.CloseConn(ps, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 		return rs != 0;
@@ -94,6 +88,12 @@ public class ScoreService {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				MysqlConnection.CloseConn(resultSet, stm, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return arrayList;
@@ -138,6 +138,12 @@ public class ScoreService {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				MysqlConnection.CloseConn(resultSet, stm, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return arrayList;

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="cn.ynni.exam.model.Teacher" %>
+<%@ page import="cn.ynni.exam.service.TeacherService" %><%--
   Created by IntelliJ IDEA.
   User: Server
   Date: 2019/5/13
@@ -16,6 +17,12 @@
     <title>在线考试系统</title>
 </head>
 <body>
+
+<%
+    TeacherService teacherService = new TeacherService();
+    Teacher teacher = teacherService.selectTeacher((String) request.getSession().getAttribute("username"));
+%>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="row clearfix">
@@ -34,7 +41,7 @@
                                 <li role="presentation" class="divider"></li>
                                 <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
                                 <li role="presentation" class="divider"></li>
-                                <li><a href="index.jsp">退出</a></li>
+                                <li><a href="LoginOutServlet">退出</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -58,6 +65,9 @@
                 </li>
                 <li>
                     <a href="selectPaper.jsp"><i class="glyphicon glyphicon-chevron-right"></i>试卷管理</a>
+                </li>
+                <li>
+                    <a href="ModifyServlet"><i class="glyphicon glyphicon-chevron-right"></i>试题修改</a>
                 </li>
             </ul>
         </div>

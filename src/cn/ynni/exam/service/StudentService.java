@@ -43,6 +43,12 @@ public class StudentService {
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+        } finally {
+            try {
+                MysqlConnection.CloseConn(stm, conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return (rs != 0);
@@ -67,6 +73,12 @@ public class StudentService {
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+        } finally {
+            try {
+                MysqlConnection.CloseConn(stm, conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return rs != 0;
@@ -97,6 +109,12 @@ public class StudentService {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                MysqlConnection.CloseConn(stm, conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return rs != 0;
@@ -121,6 +139,12 @@ public class StudentService {
             stm.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
+        } finally {
+            try {
+                MysqlConnection.CloseConn(stm, conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return true;
     }
@@ -147,12 +171,18 @@ public class StudentService {
             stm.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
+        } finally {
+            try {
+                MysqlConnection.CloseConn(stm, conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return true;
     }
     /**
      * fun: 通过stuId查询一个学生的所有信息
-     * @param name
+     * @param names
      * @return Student
      */
     public ArrayList<Student> queryStudent(String names){
@@ -180,7 +210,11 @@ public class StudentService {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }finally{
-            mysqlConnection.closeResuletSet(rs);
+            try {
+                MysqlConnection.CloseConn(rs, stm, conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return arrayList;
     }
@@ -213,7 +247,11 @@ public class StudentService {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }finally{
-            mysqlConnection.closeResuletSet(rs);
+            try {
+                MysqlConnection.CloseConn(rs, stm, conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return students_Array;
     }
@@ -246,6 +284,12 @@ public class StudentService {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                MysqlConnection.CloseConn(rs, pst, conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return student;

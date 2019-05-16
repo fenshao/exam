@@ -6,17 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class ShowQuestionServlet extends HttpServlet {
-    private int countPerPage = 2;
+public class StudentSelect extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int page;
-        try {
-            page = Integer.valueOf(req.getParameter("page"));
-        } catch (NumberFormatException e) {
-            page = 1;
-        }
-        System.out.println(page);
+        req.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html; charset=utf-8");
+
+        req.getRequestDispatcher("StudentSelectPaper.jsp").forward(req, resp);
     }
 }

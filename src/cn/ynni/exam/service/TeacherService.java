@@ -47,6 +47,12 @@ public class TeacherService {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				MysqlConnection.CloseConn(rs, pst, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return teacher;
@@ -67,15 +73,10 @@ public class TeacherService {
 			e.printStackTrace();
 		} finally {
 			//关闭连接
-			if (ps != null) {
-				try {
-					ps.close();
-					if (conn != null) {
-						conn.close();
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+			try {
+				MysqlConnection.CloseConn(ps, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 		if (rs != 0) {
@@ -97,15 +98,10 @@ public class TeacherService {
 			e.printStackTrace();
 		} finally {
 			//关闭连接
-			if (ps != null) {
-				try {
-					ps.close();
-					if (conn != null) {
-						conn.close();
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+			try {
+				MysqlConnection.CloseConn(conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 		if (rs != 0) {
@@ -129,15 +125,10 @@ public class TeacherService {
 			e.printStackTrace();
 		} finally {
 			//关闭连接
-			if (ps != null) {
-				try {
-					ps.close();
-					if (conn != null) {
-						conn.close();
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+			try {
+				MysqlConnection.CloseConn(ps, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 		if (rs != 0) {
@@ -165,6 +156,12 @@ public class TeacherService {
 			stm.executeUpdate();
 		}catch (SQLException e){
 			e.printStackTrace();
+		} finally {
+			try {
+				MysqlConnection.CloseConn(stm, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return true;
 	}
@@ -189,39 +186,42 @@ public class TeacherService {
 			stm.executeUpdate();
 		}catch (SQLException e){
 			e.printStackTrace();
+		} finally {
+			try {
+				MysqlConnection.CloseConn(stm, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return true;
 	}
 
-	public ResultSet selectTeacher(String teaId) {
+	public Teacher selectTeacher(String teaId) {
 		Connection conn = MysqlConnection.getMysqlConnection().getCon();
 		String sql = "select * teacher where tea_id = ?";
 		ResultSet rs = null;
 		PreparedStatement ps = null;
+		Teacher teacher = new Teacher();
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, teaId);
 			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				teacher.setTeaId(rs.getString(1));
+				teacher.setTeaPassword(rs.getString(2));
+				teacher.setTeaName(rs.getString(3));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			//关闭连接
-			if (ps != null) {
-				try {
-					/*
-					if (rs != null) {
-						rs.close();
-					}
-					*/
-					ps.close();
-					if (conn != null) {
-						conn.close();
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+			try {
+				MysqlConnection.CloseConn(rs,ps, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
-		return rs;
+		return teacher;
 	}
 }

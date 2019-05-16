@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
-public class TestServlet extends HttpServlet {
+public class ModifyServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -21,30 +21,20 @@ public class TestServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
 
-        String paperId = req.getParameter("paperId");
-
-        //查看试题
+        //查询试题信息
         QuestionService questionService = new QuestionService();
-        ArrayList<Question> questionArrayList = questionService.selectQuestion(Integer.parseInt(paperId));
+        ArrayList<Question> questionArrayList = questionService.selectQuestion(4);
 
-        for (int i = 0; i < questionArrayList.size(); i++) {
-            questionArrayList.get(i).setIndex(i + 1);
-        }
-
-        //查看试题名称
         PaperService paperService = new PaperService();
-        Paper paper = paperService.oneselectInfo(paperId);
+        ArrayList<Paper> paperArrayList = paperService.selectPerpar();
 
-        req.setAttribute("title", paper.getTitle());
-        req.getSession().setAttribute("paperId", paperId);
-        req.getSession().setMaxInactiveInterval(6000);
-
-        req.setAttribute("time", "1800");
+        req.setAttribute("paperArrayList", paperArrayList);
         req.setAttribute("questionArrayList", questionArrayList);
 
-        req.getRequestDispatcher("/TestPaper.jsp").forward(req, resp);
+        req.getRequestDispatcher("ModifyTest.jsp").forward(req, resp);
     }
 }

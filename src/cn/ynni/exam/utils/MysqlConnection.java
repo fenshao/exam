@@ -1,10 +1,7 @@
 package cn.ynni.exam.utils;
 
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 
 public class MysqlConnection {
@@ -43,6 +40,30 @@ public class MysqlConnection {
     public static MysqlConnection getMysqlConnection(){
         return dbm;
 
+    }
+
+    //关闭连接
+    public static void CloseConn(ResultSet resultSet, Connection connection) throws SQLException {
+
+        if (resultSet != null) resultSet.close();
+        if (connection != null) connection.close();
+
+    }
+
+    public static void  CloseConn(Statement statement, Connection connection) throws SQLException {
+        if (statement != null) statement.close();
+        if (connection != null) connection.close();
+    }
+
+
+    public static void  CloseConn(Connection connection) throws SQLException {
+        if (connection != null) connection.close();
+    }
+
+    public static void  CloseConn(ResultSet resultSet, Statement statement, Connection connection) throws SQLException {
+        if (statement != null) statement.close();
+        if (resultSet != null) resultSet.close();
+        if (connection != null) connection.close();
     }
 
     //返回数据库连接

@@ -30,6 +30,13 @@
                                 <%=request.getSession().getAttribute("username")%>
                                 <b class="caret"></b>
                             </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#updateinfo" data-toggle="modal">个人资料</a></li>
+                                <li role="presentation" class="divider"></li>
+                                <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
+                                <li role="presentation" class="divider"></li>
+                                <li><a href="LoginOutServlet">退出</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -73,6 +80,29 @@
                                     <br />
                                 </c:forEach>
 
+                                <div class="text-center">
+                                    <nav>
+                                        <ul class="pagination">
+                                            <li class="page-item"><a class="page-link" href="<c:url value="/ShowQuestionServlet?page=1"/>">首页</a></li>
+                                            <li class="page-item"><a class="page-link" href="<c:url value="/ShowQuestionServlet?page=${page-1>1?page-1:1}"/>">&laquo;</a>
+                                            </li>
+
+                                            <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+                                                <c:set var="active" value="${loop.index==page?'active':''}"/>
+                                                <li class="page-item ${active}">
+                                                    <a class="page-link" href="<c:url value="/ShowQuestionServlet?page=${loop.index}"/>">${loop.index}</a>
+                                                </li>
+                                            </c:forEach>
+                                            <li class="page-item">
+                                                <a class="page-link" href="<c:url value="/ShowQuestionServlet?page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="<c:url value="/ShowQuestionServlet?page=${totalPages}"/>">尾页</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+
                                 <div class="text-center form-group">
                                     <button type="submit" class="btn btn-primary" id="btn_query">交卷离开</button>
                                 </div>
@@ -86,10 +116,29 @@
     </div>
 </div>
 <script language="JavaScript">
-    $(function () {
-       $.ajax({
+    var dataLis = [
 
-       })
+    ]
+
+    $(function () {
+
+        //获取用户数据
+        function getData(object,url) {
+            $.ajax({
+                url: url,
+                type: "get",
+                data: dataObject,
+                traditional: true,
+                success: function (data) {
+
+                }
+            });
+        }
+
+        //获取页码数据
+        function getPage(index) {
+            getData($(this), "ShowQuestionServlet?page=" + index);
+        }
     })
 
 
@@ -104,8 +153,6 @@
             document.all["timer"].innerHTML = msg;
             if(maxtime == 5*60) alert('注意，还有5分钟!');
             --maxtime;
-
-            $.ajax()
         }
         else{
             clearInterval(timer);
