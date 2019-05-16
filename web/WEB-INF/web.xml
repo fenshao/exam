@@ -292,7 +292,7 @@
         <servlet-name>UpdateTestServlet</servlet-name>
         <url-pattern>/UpdateTestServlet</url-pattern>
     </servlet-mapping>
-    
+
     <filter>
         <filter-name>JspFilter</filter-name>
         <filter-class>cn.ynni.exam.utils.JspFilter</filter-class>
@@ -300,7 +300,7 @@
 
     <filter-mapping>
         <filter-name>JspFilter</filter-name>
-        <url-pattern>/*.jsp</url-pattern>
+        <url-pattern>*.jsp</url-pattern>
     </filter-mapping>
 
 </web-app>

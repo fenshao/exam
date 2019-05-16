@@ -16,13 +16,17 @@ public class JspFilter implements Filter {
         response.setContentType("text/html;charset=UTF-8");
 
         String url = request.getRequestURI();
-        System.out.println(url);
 
-        if (url != null && url.endsWith(".jsp")) {
+        String username = (String) request.getSession().getAttribute("username");
+        System.out.println(username);
+
+        if (username == null || "".equals("")) {
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
+        else {
+            filterChain.doFilter(request, response);
+        }
 
-        filterChain.doFilter(request, response);
     }
 
     @Override
