@@ -133,4 +133,174 @@
         <url-pattern>/AdminScoreServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>uNameAndSexServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.uNameAndSexServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>uNameAndSexServlet</servlet-name>
+        <url-pattern>/uNameAndSexServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>selectPaperServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.selectPaperServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>selectPaperServlet</servlet-name>
+        <url-pattern>/selectPaperServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AnswerServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.AnswerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AnswerServlet</servlet-name>
+        <url-pattern>/AnswerServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>uTeaNameSexServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.uTeaNameSexServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>uTeaNameSexServlet</servlet-name>
+        <url-pattern>/uTeaNameSexServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>TimeServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.TimeServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>TimeServlet</servlet-name>
+        <url-pattern>/TimeServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>studentSelectPaperServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.studentSelectPaperServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentSelectPaperServlet</servlet-name>
+        <url-pattern>/studentSelectPaperServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UploadExcelServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.UploadExcelServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UploadExcelServlet</servlet-name>
+        <url-pattern>/UploadExcelServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>fileUpLoadServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.fileUpLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>fileUpLoadServlet</servlet-name>
+        <url-pattern>/fileUpLoadServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UpdataQuestion</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.UpdataQuestion</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdataQuestion</servlet-name>
+        <url-pattern>/UpdataQuestion</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ModifyServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.ModifyServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ModifyServlet</servlet-name>
+        <url-pattern>/ModifyServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteQuestion</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.DeleteQuestion</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteQuestion</servlet-name>
+        <url-pattern>/DeleteQuestion</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SelectQuestionServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.SelectQuestionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SelectQuestionServlet</servlet-name>
+        <url-pattern>/SelectQuestionServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginOutServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.LoginOutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginOutServlet</servlet-name>
+        <url-pattern>/LoginOutServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SelectServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.SelectServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SelectServlet</servlet-name>
+        <url-pattern>/SelectServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StudentSelect</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.StudentSelect</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentSelect</servlet-name>
+        <url-pattern>/StudentSelect</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateTestServlet</servlet-name>
+        <servlet-class>cn.ynni.exam.controllar.UpdateTestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateTestServlet</servlet-name>
+        <url-pattern>/UpdateTestServlet</url-pattern>
+    </servlet-mapping>
+    
+    <filter>
+        <filter-name>JspFilter</filter-name>
+        <filter-class>cn.ynni.exam.utils.JspFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>JspFilter</filter-name>
+        <url-pattern>/*.jsp</url-pattern>
+    </filter-mapping>
+
 </web-app>

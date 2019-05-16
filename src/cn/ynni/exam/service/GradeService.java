@@ -1,7 +1,6 @@
 package cn.ynni.exam.service;
 
 import cn.ynni.exam.model.Grade;
-import cn.ynni.exam.model.Timer;
 import cn.ynni.exam.utils.MysqlConnection;
 
 import java.sql.Connection;
